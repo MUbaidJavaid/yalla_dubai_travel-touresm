@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link href="./output.css" rel="stylesheet" />
+    <title>Login Page</title>
+  </head>
+  <body class="">
+    <div
+      class="max-w-sm mx-auto border w-[50vw] h-[65vh] my-14 rounded-md shadow-lg"
+    >
+      <h2 class="text-center font-bold mt-4 text-3xl text-cyan-400">Login</h2>
+      <form action="/login" method="post" class="mx-10 my-5">
+        <div class="mb-5">
+          <label
+            for="email"
+            class="block mb-2 text-lg font-medium text-cyan-400"
+            >Your Email:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="bg-gray-50 border w-[95%] border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-400 block px-2.5"
+            placeholder="example@gmail.com"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="mb-5">
+          <label
+            for="password"
+            class="block mb-2 text-lg font-medium text-cyan-400"
+            >Your password:</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-400 block w-[95%] px-3.5"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-cyan-500 font-medium rounded-lg text-lg w-full sm:w-[95%] px-14 py-1.5 text-center"
+        >
+          Login
+        </button>
+      </form>
+      <p class="text-xs -mt-4 mb-4 ml-10">
+        Don't have an account?
+        <a
+          class="font-semibold text-cyan-400 hover:text-cyan-600 transition-all text-xs mt-1 duration-200"
+          href="./signup"
+          >SignUp</a
+        >
+      </p>
+    </div>
+    <script>
+      console.log("Script running...");
+      verifyToken(); // call
+
+      async function verifyToken() {
+        const response = await fetch("/auth", {
+          method: "POST",
+          // headers: {
+          //   'Content-Type': 'application/json',
+          // },
+        });
+
+        if (response.status == 200) {
+          data = await response.json();
+          if (data.user.role == "admin") window.location.href = "/admin";
+          else window.location.href = "/home";
+        } else {
+          console.log("Token not verified !");
+        }
+      }
+    </script>
+  </body>
+</html>

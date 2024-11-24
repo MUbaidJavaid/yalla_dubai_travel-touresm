@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+      <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="./output.css" rel="stylesheet">
+    <title>Home Page</title>
+</head>
+<body class=" font-[Poppins]  bg-gray-100">
+
+  <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+    <div class="flex justify-between items-center">
+        <span class="text-2xl font-[Poppins] cursor-pointer text-cyan-400">
+        <!-- <img class="h-10 inline" src="tailwind-svgrepo-com.svg" alt=""> -->
+         Home Page
+        </span>
+        <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+            <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+         </span>
+    </div>
+    <ul class="md:flex md:items-center z-[-1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
+        <li class="mx-4 my-6 md:my-0">
+            <a href="home" class="text-sm hover:text-cyan-500 duration-500">HOME</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="product" class="text-sm hover:text-cyan-500 duration-500">SERVICE</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-sm hover:text-cyan-500 duration-500">ABOUT</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-sm hover:text-cyan-500 duration-500">CONTACT</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-sm hover:text-cyan-500 duration-500">BLOG'S</a>
+        </li>
+        <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+            Get started
+        </button>
+    </ul>
+</nav>
+    <div id="home" class=" text-center text-6xl font-bold mt-28">
+        <h1 class="text-gray-700 place-content-center ">Welcome to Home page</h1>
+        <p class="text-gray-700 text-xl font-medium mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, necessitatibus quaerat </p>
+    </div>
+<div id="main" class="flex flex-wrap justify-around my-10 mx-10 gap-10">
+  <% products.forEach(product => { %>
+  <div class="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg my-10 ">
+    <div class="relative mx-4 my-4 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r ">
+      <img src="<%= product.thumbnail %>" alt="<%= product.title %>" class="bg-cover w-[98%] h-[99%]" />
+    </div>
+    <div class="p-6">
+      <div class="flex justify-between">
+      <p class="mb-2 font-sans text-xl font-bold leading-snug tracking-normal  text-cyan-400 antialiased">
+        <%= product.title %>
+      </p>
+      <p class="font-bold text-xl text-gray-700">$<%= product.price %></p>
+    </div>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+        <!-- <% /* = product.discription */ %> -->
+         All Produces are same 
+      </p>
+    </div>
+    <div class="p-6 pt-0">
+      <button data-ripple-light="true" type="button" class="add-to-cart select-none w-[97%] rounded-lg bg-cyan-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-id="<%= product._id %>">
+        Cart Detail
+      </button>
+    </div>
+  </div>
+  <% }); %>
+</div>
+</div>
+<script>
+  // Add functionality to "Add to Cart" buttons
+  document.querySelectorAll(".add-to-cart").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const productId = event.target.getAttribute("data-id");
+      // const productId = '12345'; // replace with your dynamic ID
+      const url = `product/?id=${productId}`;
+
+      fetch(url)
+      .then(response => {
+        if (response.ok) {
+          window.location.href = `/product?id=${productId}`;
+        } else {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+      })
+     .catch(error => console.error('Fetch error:', error));
+
+
+      // console.log("Product added to cart:", productId);
+      // alert("Product added to cart!");
+    });
+  });
+  function Menu(e){
+            let list =document.querySelector('ul');
+            e.name === 'menu' ? (e.name = "close" ,list.classList.add('top-80px'),list.classList.add('opacity-100')) :( e.name = "menu",list.classList.remove('top-80px'),list.classList.remove('opacity-100')) 
+        }
+
+</script>
+
+</body>
+</html>

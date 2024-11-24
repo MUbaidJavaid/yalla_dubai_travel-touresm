@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="./output.css" rel="stylesheet" />
+    <title>Product Detail</title>
+  </head>
+  <body class="bg-gray-100">
+    <nav class="fixed w-full p-5 bg-white shadow md:relative  md:flex md:items-center md:justify-between">
+      <div class="flex justify-between items-center">
+          <span class="text-2xl font-[Poppins] cursor-pointer text-cyan-400">
+          <!-- <img class="h-10 inline" src="tailwind-svgrepo-com.svg" alt=""> -->
+          <%= product.title %> 
+          </span>
+          <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+              <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+           </span>
+      </div>
+      <ul class="md:flex md:items-center z-[-1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
+          <li class="mx-4 my-6 md:my-0">
+              <a href="home" class="text-sm hover:text-cyan-500 duration-500">HOME</a>
+          </li>
+          <li  class="mx-4 my-6 md:my-0">
+              <a href="product" class="text-sm hover:text-cyan-500 duration-500">SERVICE</a>
+          </li>
+          <li  class="mx-4 my-6 md:my-0">
+              <a href="#" class="text-sm hover:text-cyan-500 duration-500">ABOUT</a>
+          </li>
+          <li  class="mx-4 my-6 md:my-0">
+              <a href="#" class="text-sm hover:text-cyan-500 duration-500">CONTACT</a>
+          </li>
+          <li  class="mx-4 my-6 md:my-0">
+              <a href="#" class="text-sm hover:text-cyan-500 duration-500">BLOG'S</a>
+          </li>
+          <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+              Get started
+          </button>
+      </ul>
+  </nav>
+    <div class="place-content-center md:flex md:justify-around">
+      <div class="my-14 pb-6 md:pb-0 md:mt-6 bg-white rounded-lg mx-5">
+        <div class="md:w-[50vw] shadow-lg  mx-4 my-4">
+          <!-- <h1>
+            <%= /*product.id */ %>
+          </h1> -->
+           <img src="<%= product.thumbnail %>" alt="<%= product.title %>" class="bg-cover w-[100%] h-[50vh] rounded-lg">
+        </div>
+        <!-- <p>Product ID: <%= /* product.id */ %></p> -->
+            <p  class="mb-2  font-serif text-xl font-bold leading-snug tracking-normal text-cyan-400 antialiased  mx-7">Product Name: <span class="text-xl font-medium text-gray-700"><%= product.title %></span></p>
+            <p class="font-bold mb-2  text-xl mx-7 text-cyan-400  font-serif">Product Price: <span id="price" class="text-xl font-medium text-gray-700">$<%= product.price %></span></p>
+            <p class="font-bold mb-2  text-xl mx-7 text-cyan-400  font-serif">Adult Price: <span id="mySpan1" class="text-xl font-medium text-gray-700">$<%= product.adultBaseprice %></span></p>
+            <p class="font-bold mb-2  text-xl mx-7 text-cyan-400  font-serif">Kids Price: <span id="mySpan2"  class="text-xl font-medium text-gray-700">$<%= product.kidsBaseprice %></span></p>
+            <p class="font-bold   text-xl mx-7 text-cyan-400  font-serif">Day Price: <span id="mySpan3"  class="text-xl font-medium text-gray-700">$<%= product.dayBaseprice %></span></p>
+      </div>
+      <div class=" my-14 md:mt-6 mx-9 md:w-[25vw]">
+        <form action="/cart" method="post">
+          <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
+            <h5 class="mb-4 text-xl font-medium text-gray-500 "><%= product.title %></h5>
+            <div class="flex items-baseline text-gray-900 ">
+                <span class="text-4xl font-semibold text-cyan-400">$</span>
+                <span class="text-5xl font-extrabold tracking-tight text-cyan-400"><%= product.price %></span>
+                <span class="ms-1 text-xl font-normal text-gray-500  ">/day</span>
+            </div>
+          <div>
+              <div class="mt-5 ">
+                <div class="flex flex-col w-full gap-4 md:flex-row">
+                    <div class="relative w-full">
+                        <input type="number" id="adults_no" name="adults"
+                            class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:outline-none focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                            placeholder=" " value="1" min="1" />
+                        <label for="adults"
+                            class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Adults no.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 ">
+              <div class="flex flex-col w-full gap-4 md:flex-row">
+                  <div class="relative w-full">
+                      <input type="number" id="kids_no" name="kids"
+                          class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                          placeholder=" " value="1" min="1" />
+                      <label for="kids"
+                          class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Kids no.</label>
+                  </div>
+              </div>
+          </div>
+            <div class="mt-5 ">
+              <div class="flex flex-col w-full gap-4 md:flex-row">
+                  <div class="relative w-full">
+                      <input type="datetime-local" id="check_in_date" name="task_starting_date"
+                          class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                          placeholder=" " />
+                      <label for="task_starting_date"
+                          class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Check in:</label>
+                   </div>
+               </div>
+            </div>
+            <div class="mt-5 ">
+            <div class="flex flex-col w-full gap-4 md:flex-row">
+                <div class="relative w-full">
+                    <input type="datetime-local" id="check_out_date" name="task_starting_date"
+                        class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                        placeholder=" " />
+                    <label for="task_starting_date"
+                        class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Check out:</label>
+                 </div>
+             </div>
+            </div>
+
+            <input type="number" id="total_no" name="adults"
+            class="block mt-4 px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+            placeholder=" " />
+
+            <button id="button" type="button" class="text-cyan-400 mt-5 bg-white hover:text-white hover:bg-cyan-600 ring-4 outline-none ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"  data-id="<%= product._id %>" >Calculate Price</button>
+
+            <button id="button_1" type="button" class="text-white mt-5 bg-cyan-400 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"  data-id="<%= product._id %>" >Add to cart</button>
+            </div>    
+          </div>
+        </form>
+    </div>
+    <script>
+    const calculatePrice = document.querySelector('#button');
+    const addtoCard = document.querySelector('#button_1');  
+    // document.querySelectorAll(".add-to-cart").forEach((button) => {
+
+    addtoCard.addEventListener("click", (event) => {
+      const productId = event.target.getAttribute("data-id");
+        const Adults = document.getElementById("adults_no").value;
+        const kids = document.getElementById("kids_no").value;
+        const check_in = new Date(document.getElementById('check_in_date').value);
+        const check_out = new Date(document.getElementById('check_out_date').value);
+        const dayMs = check_out-check_in;
+        const daysCount = Math.floor(dayMs / (1000 * 60 * 60 * 24));
+        const total_no = document.getElementById('total_no');
+        const spanValue1 = document.querySelector('#mySpan1').innerText; 
+        const spanValue2 = document.querySelector('#mySpan2').innerText;
+        const spanValue3 = document.querySelector('#mySpan3').innerText;
+        const numericValue1 = parseFloat(spanValue1.replace('$', ''));
+        const numericValue2 = parseFloat(spanValue2.replace('$', ''));
+        const numericValue3 = parseFloat(spanValue3.replace('$', ''));
+        const totalCost = (Adults * numericValue1 + kids * numericValue2 + daysCount* numericValue3);
+        total_no.value = totalCost;
+        const url = `cart/?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}`;
+
+
+
+      fetch(url)
+       .then(response => {
+            if (response.ok) {
+              window.location.href = `/cart?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}`;
+            } else {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+       })
+      .catch(error => console.error('Fetch error:', error));
+
+
+      // console.log("Product added to cart:", productId);
+      // alert("Product added to cart!");
+    });
+
+    calculatePrice.addEventListener("click", async (event) => {
+        const productId = event.target.getAttribute("data-id");
+        const Adults = document.getElementById("adults_no").value;
+        const kids = document.getElementById("kids_no").value;
+        const check_in = new Date(document.getElementById('check_in_date').value);
+        const check_out = new Date(document.getElementById('check_out_date').value);
+        const spanValue1 = document.querySelector('#mySpan1').innerText; 
+        const spanValue2 = document.querySelector('#mySpan2').innerText;
+        const spanValue3 = document.querySelector('#mySpan3').innerText;
+        const numericValue1 = parseFloat(spanValue1.replace('$', ''));
+        const numericValue2 = parseFloat(spanValue2.replace('$', ''));
+        const numericValue3 = parseFloat(spanValue3.replace('$', ''));
+        const total_no = document.getElementById('total_no');
+        const dayMs = check_out-check_in;
+        const daysCount = Math.floor(dayMs / (1000 * 60 * 60 * 24));
+        const url = `product/?id=${productId}`;
+
+        if (!productId || isNaN(Adults) || isNaN(kids) || dayMs <= 0) {
+        alert("Please ensure all fields are correctly filled and valid.");
+        return;
+        }
+
+      const totalCost = (Adults * numericValue1 + kids * numericValue2 + daysCount* numericValue3);
+      total_no.value = totalCost;
+      console.log(daysCount);
+      console.log("Product ID:", productId);
+      console.log("Adults:", Adults);
+      console.log("Kids:", kids);
+      console.log("Check in:", check_in);
+      console.log("Check out:", check_out);
+// Remove `$` and convert to numbers
+      console.log(numericValue1); // Correct numeric value of adultBaseprice
+      console.log(numericValue2); // Correct numeric value of kidsBaseprice
+      console.log(numericValue3); // Correct numeric value of dayBaseprice
+      console.log("Total cost:", totalCost);
+// `http://localhost:5000/product?id=${productId}`
+    // try {
+    //     const response = await fetch(`http://localhost:5000/product?id=${productId}`);
+    //     console.log('Response Status:', response.status);
+    //     console.log('Response Headers:', response.headers);
+    //     // const responseText = await response.text();
+    //     console.log('Raw Response Text:', responseText); // Log the full HTML response
+    //     if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
+
+    //     const contentType = response.headers.get("content-type");
+    //     console.log('Content-Type:', contentType);
+
+    //      if (contentType && contentType.includes("application/json")) {
+    //         const data = await response.json();
+    //         // Process JSON response
+    //         const adultBasePrice = data.adultBaseprice || 0;
+    //         const kidsBasePrice = data.kidsBaseprice || 0;
+    //         console.log("Data:", data);
+    //         console.log("Adult Base Price:", adultBasePrice);
+    //         console.log("Kids Base Price:", kidsBasePrice);
+    //         // Calculate total based on product pricing
+    //       const totalCost = (Adults * adultBasePrice + kids * kidsBasePrice) * daysCount;
+    //         total_no.value = totalCost;
+    //         console.log("Total cost:", totalCost);
+    //     } else {
+    //         throw new Error("Unexpected response format");
+    //     }
+    //   } catch (error) {
+    //       console.log("Error fetching product data:", error);
+    //   }
+            
+      // const productId = '12345'; // replace with your dynamic ID
+ 
+    //   fetch(url)
+    //   .then(response => {
+    //     if (response.ok) {
+    //       window.location.href = "/addtocart";
+    //     } else {
+    //       throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
+    //   })
+    //  .catch(error => console.error('Fetch error:', error));
+
+
+      // console.log("Product added to cart:", productId);
+      // alert("Product added to cart!");
+    // });
+   });
+
+      function Menu(e){
+          let list = document.querySelector('ul');
+          e.name === 'menu' ? (e.name = "close" ,list.classList.add('top-80px'),list.classList.add('opacity-100')) :( e.name = "menu",list.classList.remove('top-80px'),list.classList.remove('opacity-100')) 
+      }
+    </script>
+
+  </body>
+</html>

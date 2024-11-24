@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+      <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link href="./output.css" rel="stylesheet">
+    <title>Admin Control Panal</title>
+</head>
+<body class="bg-gray-100 font-[Poppins] flex justify-center ">
+  <!-- Saidebar start -->
+     <div class="w-[20vw]">
+        <span class="absolute text-gray-900 text-4xl top-5 left-4 cursor-pointer" >
+            <i class="bi bi-filter-left px-2 bg-gray-200 rounded-md"  onclick="Open()"></i>
+        </span>
+        <div class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 w-[20vw] overflow-y-auto text-center bg-gray-300">
+          
+            <div class="text-white text-xl">
+                <div class="p-2.5 mt-1 flex items-center">
+                <i class="bi bi-app-indicator px-2 py-1 bg-gray-800 rounded-md"></i>
+                <h1 class="font-bold text-gray-900 text-xl ml-3">Admin </h1>
+                <i class="bi bi-x ml-20 cursor-pointer lg:hidden" onclick="Open()"></i>
+                </div>
+                <hr class="my-2 text-gray-900">
+            </div>
+            
+            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-900 text-white"> 
+                <i class="bi bi-search text-sm"></i>
+                <input type="text"  placeholder="Search" class="text-sm ml-4 w-full bg-transparent outline-0 focus:outline-0">
+            </div>
+            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-gray-700 hover:text-white text-gray-900"> 
+                <i class="bi bi-house-door-fill"></i>
+                <span class="text-[15px] ml-4 hover:text-white ">Home</span>
+            </div>
+            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-gray-700 hover:text-white text-gray-900"> 
+                <i class="bi bi-bookmark-fill"></i>
+                <span class="text-[15px] ml-4 hover:text-white ">Bookmark</span>
+            </div>
+            <hr class="my-4 text-gray-900">
+            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-gray-700 hover:text-white text-gray-900 " onclick="dropdown()"> 
+                <i class="bi bi-chat-left-text-fill"></i>
+                <div class="flex justify-between w-full items-center">
+                    <span  class="text-[15px] ml-4 hover:text-white " >Chatbox</span>
+                    <span class="text-sm rotate-180 " id="arrow">
+                        <i class="bi bi-chevron-down"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="text-left text-sm font-thin mt-2 w-4/5 mx-auto" id="submenu">
+                <h1 class="cursor-pointer p-2 hover:bg-gray-700 hover:text-white rounded-md mt-1 text-gray-900">Social</h1>
+                <h1 class="cursor-pointer p-2 hover:bg-gray-700 hover:text-white rounded-md mt-1 text-gray-900">Personal</h1>
+                <h1 class="cursor-pointer p-2 hover:bg-gray-700 hover:text-white rounded-md mt-1 text-gray-900">Friends</h1>
+            </div>
+            <form action="/logout" method="post">
+            <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-gray-700 hover:text-white text-gray-900"> 
+                <i class="bi bi-box-arrow-in-right"></i>
+                <button type="submit" class="text-[15px] ml-4 hover:text-white ">Logout</button>
+            </div>
+          </form>
+        </div>
+     </div>
+     <!-- Saidebar end -->
+
+      <!-- Main section  Start-->
+      <div class="w-[80vw]">
+        <!-- cardes start  -->
+        <div class="flex flex-col justify-around  gap-y-4 md:flex md:flex-row md:gap-7 items-center md:mx-12 my-6">
+          <div class="lg:w-[22vw] w-[90vw] p-4 bg-white border border-gray-200 rounded-lg shadow">
+              <div class="flex justify-between gap-36 md:gap-16">
+                  <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="70" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="70" class="stroke-blue-400 w-10 h-10 p-2 bg-sky-100 rounded-2xl">
+                      <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M60.7,25v7.2m0,14.2v7.2m0,14.2V75M25,25a7.1,7.1,0,0,0-7.1,7.2V42.9a7.1,7.1,0,1,1,0,14.2V67.8A7.1,7.1,0,0,0,25,75H75a7.1,7.1,0,0,0,7.1-7.2V57.1a7.1,7.1,0,1,1,0-14.2V32.2A7.1,7.1,0,0,0,75,25Z">
+                      </path>
+                    </svg>
+                    <div>
+                  <h5 class="  font-medium tracking-tight text-slate-500 text-xs ">Projects</h5>
+                  <h1 class="text-gray-900 font-bold text-2xl  grid place-content-end mr-1  ">18</h1>
+                </div> 
+             </div>
+             <hr class="mt-2"> 
+              <p class=" font-norml text-gray-500 text-sm mt-2">
+              <span class="text-green-800 font-bold">+55%</span>
+              <span class="text-xs">than last week</span>
+              </p>
+          </div>
+          
+          <div class="lg:w-[22vw] w-[90vw] p-4 bg-white border border-gray-200 rounded-lg shadow">
+              <div class="flex justify-between gap-36 md:gap-16">
+                  <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="70" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="70" class="stroke-blue-400 w-10 h-10 p-2 bg-sky-100 rounded-2xl">
+                      <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M60.7,25v7.2m0,14.2v7.2m0,14.2V75M25,25a7.1,7.1,0,0,0-7.1,7.2V42.9a7.1,7.1,0,1,1,0,14.2V67.8A7.1,7.1,0,0,0,25,75H75a7.1,7.1,0,0,0,7.1-7.2V57.1a7.1,7.1,0,1,1,0-14.2V32.2A7.1,7.1,0,0,0,75,25Z">
+                      </path>
+                    </svg>
+                    <div>
+                  <h5 class=" text-sm font-medium tracking-tight text-slate-600 ">Projects</h5>
+                  <h1 class="text-gray-900 font-bold text-2xl  grid place-content-end mr-1  ">18</h1>
+                 </div> 
+              </div>
+             <hr class="mt-2"> 
+              <p class=" font-normal text-gray-500 text-sm mt-2">
+              <span class="text-green-800 font-bold">+55%</span>
+              <span>than last week</span>
+              </p>
+          </div>
+          <div class="lg:w-[22vw] w-[90vw] p-4 bg-white border border-gray-200 rounded-lg shadow">
+              <div class="flex justify-between gap-36 md:gap-16">
+                  <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="70" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="70" class="stroke-blue-400 w-10 h-10 p-2 bg-sky-100 rounded-2xl">
+                      <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M60.7,25v7.2m0,14.2v7.2m0,14.2V75M25,25a7.1,7.1,0,0,0-7.1,7.2V42.9a7.1,7.1,0,1,1,0,14.2V67.8A7.1,7.1,0,0,0,25,75H75a7.1,7.1,0,0,0,7.1-7.2V57.1a7.1,7.1,0,1,1,0-14.2V32.2A7.1,7.1,0,0,0,75,25Z">
+                      </path>
+                    </svg>
+                    <div>
+                  <h5 class=" text-sm font-medium tracking-tight text-slate-600 ">Projects</h5>
+                  <h1 class="text-gray-900 font-bold text-2xl  grid place-content-end mr-1  ">18</h1>
+                </div>           
+              </div>
+             <hr class="mt-2"> 
+              <p class=" font-normal text-gray-500 text-sm mt-2">
+              <span class="text-green-800 font-bold">+55%</span>
+              <span>than last week</span>
+              </p>
+          </div>
+          <div class="lg:w-[22vw] w-[90vw] p-4 bg-white border border-gray-200 rounded-lg shadow">
+              <div class="flex justify-between gap-36 md:gap-16">
+                  <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="70" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="70" class="stroke-blue-400 w-10 h-10 p-2 bg-sky-100 rounded-2xl">
+                      <path stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M60.7,25v7.2m0,14.2v7.2m0,14.2V75M25,25a7.1,7.1,0,0,0-7.1,7.2V42.9a7.1,7.1,0,1,1,0,14.2V67.8A7.1,7.1,0,0,0,25,75H75a7.1,7.1,0,0,0,7.1-7.2V57.1a7.1,7.1,0,1,1,0-14.2V32.2A7.1,7.1,0,0,0,75,25Z">
+                      </path>
+                    </svg>
+                    <div>
+                  <h5 class=" text-sm font-medium tracking-tight text-slate-600 ">Projects</h5>
+                  <h1 class="text-gray-900 font-bold text-2xl  grid place-content-end mr-1  ">18</h1>
+                </div> 
+              </div>
+             <hr class="mt-2"> 
+              <p class=" font-normal text-gray-500 text-sm mt-2">
+              <span class="text-green-800 font-bold">+55%</span>
+              <span>than last week</span>
+              </p>
+          </div>     
+        </div>
+          <!-- cardes end  -->
+
+          <!-- table start -->
+          <div class="relative border-2  overflow-x-auto  shadow-2xl my-5 mx-4  lg:mx-12 rounded-lg">
+            <div class="h-16 bg-white border-b-2 grid items-center rounded-t-lg pl-10 text-xl">
+                <h1>Active Project</h1>
+            </div> 
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+       
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
+          
+              <tr>
+                  <th scope="col" class="p-4">
+                      <div class="flex items-center">
+                          
+                      </div>
+                  </th>
+                  <th scope="col" class="px-6 py-3 ">
+                      Project NName
+                  </th>
+                  
+                  <th scope="col" class="px-6 py-3">
+                      Hours
+                  </th>
+                  <th scope="col" class="px-9 py-3">
+                      priority
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Members
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Progress
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr class="bg-white border-b  hover:bg-gray-50 ">
+                  <td class="w-4 p-4">
+                      <div class="flex items-center"> 
+                          <i class="fa-brands fa-dropbox text-indigo-600 text-3xl  ring-1 ring-slate-300 w-9 text-center   "></i>
+                      </div>
+                  </td>
+                  
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                    Dropbox Design System
+                </th>
+                  <td class="px-7 py-4">
+                      34
+                  </td>
+                  <td class="px-6 py-4">
+                    <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-2.1 me-2 mb-2 ">Medium</button>
+    
+                  </td>
+                  <td class="">
+                    <div class="mt-3 flex -space-x-5 overflow-hidden">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                        <div class="bg-blue-900 text-xl font-medium text-blue-100 text-center p-1 leading-none rounded-full " > +5</div>
+                    </div> 
+    
+                  <td class="">
+                      <a href="#" class="font-medium text-yellow-500 dark:text-yellow-600 hover:underline"><div class="flex  ">
+                        <div>
+                          <p>15%</p>
+                        </div>
+                        <div class=" grid items-center p-2 ">
+                          <div class="w-20 bg-gray-200 rounded-full h-1.5 mb-2  ">
+                            <div class="bg-yellow-400 h-1.5 rounded-full  " style="width: 25%"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </td>
+              </tr>
+              <tr class="bg-white border-b  hover:bg-gray-50 ">
+                  <td class="w-4 p-4">
+                      <div class="flex items-center">
+                          <div class="h-8 w-8 ring-1 ring-slate-300  grid items-center  place-content-center">
+                            <svg  width="27px" height="27px" viewBox="0 0 32.00 32.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00032"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M26.5002 14.9996C27.8808 14.9996 29 13.8804 29 12.4998C29 11.1192 27.8807 10 26.5001 10C25.1194 10 24 11.1193 24 12.5V14.9996H26.5002ZM19.5 14.9996C20.8807 14.9996 22 13.8803 22 12.4996V5.5C22 4.11929 20.8807 3 19.5 3C18.1193 3 17 4.11929 17 5.5V12.4996C17 13.8803 18.1193 14.9996 19.5 14.9996Z" fill="#2EB67D"></path> <path d="M5.49979 17.0004C4.11919 17.0004 3 18.1196 3 19.5002C3 20.8808 4.1193 22 5.49989 22C6.8806 22 8 20.8807 8 19.5V17.0004H5.49979ZM12.5 17.0004C11.1193 17.0004 10 18.1197 10 19.5004V26.5C10 27.8807 11.1193 29 12.5 29C13.8807 29 15 27.8807 15 26.5V19.5004C15 18.1197 13.8807 17.0004 12.5 17.0004Z" fill="#E01E5A"></path> <path d="M17.0004 26.5002C17.0004 27.8808 18.1196 29 19.5002 29C20.8808 29 22 27.8807 22 26.5001C22 25.1194 20.8807 24 19.5 24L17.0004 24L17.0004 26.5002ZM17.0004 19.5C17.0004 20.8807 18.1197 22 19.5004 22L26.5 22C27.8807 22 29 20.8807 29 19.5C29 18.1193 27.8807 17 26.5 17L19.5004 17C18.1197 17 17.0004 18.1193 17.0004 19.5Z" fill="#ECB22E"></path> <path d="M14.9996 5.49979C14.9996 4.11919 13.8804 3 12.4998 3C11.1192 3 10 4.1193 10 5.49989C10 6.88061 11.1193 8 12.5 8L14.9996 8L14.9996 5.49979ZM14.9996 12.5C14.9996 11.1193 13.8803 10 12.4996 10L5.5 10C4.11929 10 3 11.1193 3 12.5C3 13.8807 4.11929 15 5.5 15L12.4996 15C13.8803 15 14.9996 13.8807 14.9996 12.5Z" fill="#36C5F0"></path> </g></svg>
+                          </div>
+                      </div>
+                  </td>
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                      Slack Team UI Design
+                  </th>
+                  <td class="px-7 py-4">
+                      47
+                  </td>
+                  <td class="px-6 py-4">
+                    <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.3 me-2 mb-2   ">High</button>
+    
+                  </td>
+                  <td class="">
+                    <div class="mt-3 flex -space-x-5 overflow-hidden">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                        <div class="bg-blue-900 text-xl font-medium text-blue-100 text-center p-1 leading-none rounded-full " > +5</div>
+                    </div> 
+        
+    
+                  </td>
+                  <td class="">
+                    <a href="#" class="font-medium text-red-700 dark:text-red-900 hover:underline"><div class="flex  ">
+                      <div>
+                        <p>35%</p>
+                      </div>
+                      <div class=" grid items-center p-2 ">
+                        <div class="w-20 bg-gray-200 rounded-full h-1.5 mb-2  ">
+                          <div class="bg-red-800 h-1.5 rounded-full text-red-700  " style="width: 43%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              <tr class="bg-white border-b  hover:bg-gray-50 ">
+                  <td class="w-4 p-4">
+                      <div class="flex items-center">
+                          <div class="h-8 w-8 ring-1 ring-slate-300  grid items-center  place-content-center">
+                            <svg width="27px" height="27px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>github [#142]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#000000"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399" id="github-[#142]"> </path> </g> </g> </g> </g></svg>
+                          </div>
+                          
+                  </td>
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                      GitHub Satellite
+                  </th>
+                  <td class="px-6 py-4">
+                      120
+                  </td>
+                  <td class="px-6 py-4">
+                    <button type="button" class="focus:outline-none text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.3 me-2 mb-2 ">Low</button>              </td>
+                    <td class="">
+                        <div class="mt-3 flex -space-x-5 overflow-hidden">
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                            <div class="bg-blue-900 text-xl font-medium text-blue-100 text-center p-1 leading-none rounded-full " > +5</div>
+                        </div> 
+                         
+        
+                  </td>
+                  <td class="">
+                    <a href="#" class="font-medium text-blue-600  hover:underline"><div class="flex  ">
+                      <div>
+                        <p>75%</p>
+                      </div>
+                      <div class=" grid items-center p-2 ">
+                        <div class="w-20 bg-gray-200 rounded-full h-1.5 mb-2  ">
+                          <div class="bg-blue-600 h-1.5 rounded-full  " style="width: 64%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              <tr class="bg-white border-b  hover:bg-gray-50 ">
+                  <td class="w-4 p-4">
+                      <div class="flex items-center">
+                          <i class="fa-brands fa-dropbox text-indigo-600 text-3xl  ring-1 ring-slate-300 w-9 text-center   "></i>
+                      </div>
+                  </td>
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                      3D Character Modelling
+                  </th>
+                  <td class="px-6 py-4">
+                      89
+                  </td>
+                  <td class="px-6 py-4">
+                    <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-2.1 me-2 mb-2 ">Medium</button>              </td>
+                    <td class="">
+                        <div class="mt-3 flex -space-x-5 overflow-hidden">
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                            <div class="bg-blue-900 text-xl font-medium text-blue-100 text-center p-1 leading-none rounded-full " > +5</div>
+                        </div> 
+                         
+                  </td>
+                  <td class="">
+                    <a href="#" class="font-medium text-yellow-600  hover:underline"><div class="flex  ">
+                      <div>
+                        <p>63%</p>
+                      </div>
+                      <div class=" grid items-center p-2 ">
+                        <div class="w-20 bg-gray-200 rounded-full h-1.5 mb-2 ">
+                          <div class="bg-yellow-600 h-1.5 rounded-full  " style="width: 50%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              <tr class="bg-white border-b  hover:bg-gray-50 ">
+                  <td class="w-4 p-4">
+                      <div class="flex items-center">
+                      <i class="fa-brands fa-dropbox text-indigo-600 text-3xl  ring-1 ring-slate-300 w-9 text-center   "></i>
+                  </td>
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                      Webapp Design System
+                  </th>
+                  <td class="px-6 py-4">
+                      108
+                  </td>
+                  <td class="px-6 py-4">
+                    <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-3 py-2.1 mb-2 ">Track</button>
+                </td>
+                <td class="">
+                    <div class="mt-3 flex -space-x-5 overflow-hidden">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                        <div class="bg-blue-900 text-xl font-medium text-blue-100 text-center p-1 leading-none rounded-full " > +5</div>
+                    </div> 
+                  
+                  </td>
+                  <td class="">
+                    <a href="#" class="font-medium text-green-700  hover:underline"><div class="flex  ">
+                      <div>
+                        <p>100%</p>
+                      </div>
+                      <div class=" grid items-center p-2 ">
+                        <div class="w-20 bg-gray-200 rounded-full h-1.5 mb-2  ">
+                          <div class="bg-green-900 h-1.5 rounded-full  " style="width: 100%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              <tr class="bg-white border-b hover:bg-gray-50 ">
+                  <td class="w-4 p-4">
+                      <div class="flex items-center">
+                          <div class="h-8 w-8 ring-1 ring-slate-300  grid items-center  place-content-center">
+                            <svg width="27px" height="27px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>github [#142]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#000000"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399" id="github-[#142]"> </path> </g> </g> </g> </g></svg>
+                          </div>
+                      </div>
+                  </td>
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                    GitHub Event Design
+                </th>
+                  <td class="px-6 py-4">
+                      120
+                  </td>
+                  <td class="px-6 py-4">
+                    <button type="button" class="focus:outline-none text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.3 me-2 mb-2 ">Low</button>               </td>
+                    <td class="">
+                        <div class="mt-3 flex -space-x-5 overflow-hidden">
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt=""/>
+                            <div class="bg-blue-900 text-xl font-medium text-blue-100 text-center p-1 leading-none rounded-full " > +5</div>
+                        </div> 
+                         
+                  </td>
+                  <td class="">
+                    <a href="#" class="font-medium text-blue-600  hover:underline"><div class="flex  ">
+                      <div>
+                        <p>75%</p>
+                      </div>
+                      <div class=" grid items-center p-2 ">
+                        <div class="w-20 bg-gray-200 rounded-full h-1.5 mb-2 ">
+                          <div class="bg-blue-600 h-1.5 rounded-full  " style="width: 75%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>  
+          </tbody>
+      </table>
+      <div class="h-12 w-full bg-white border-t-2 grid items-center justify-center rounded-br-lg rounded-bl-lg pl-10 text-base">
+        <a href="#" class="text-purple-800">View all Project</a>
+      </div>
+    </div> 
+           <!-- table end -->
+      </div>
+      <!-- Main section  Start-->
+
+  <script type="text/javascript">
+    // // Before returning this page to client, get the JWT token from the local storage and verify it with the server
+      // If the token is valid, show the home page otherwise redirect to login page
+      
+      // const token = localStorage.getItem('token');
+      // if (!token) {
+      //   window.location.href = '/login';
+      // }
+      function dropdown(){
+          document.querySelector('#submenu').classList.toggle('hidden');
+          document.querySelector('#arrow').classList.toggle('rotate-0');
+      }
+      function Open(){
+          document.querySelector('.sidebar').classList.toggle('left-[-300px]');
+      }
+  </script>
+</body>
+</html>

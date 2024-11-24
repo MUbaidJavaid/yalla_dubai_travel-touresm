@@ -1,0 +1,635 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link href="./output.css" rel="stylesheet" />
+    <title>Add to Cart</title>
+  </head>
+  <body class="font-[Poppins] bg-gray-100">
+    <nav class="bg-white border-gray-200 shadow-md">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <div>
+          <i class="bi bi-house-door-fill" style="width: 40;"></i> 
+          <span class="self-center text-2xl font-semibold whitespace-nowrap"
+            >Home Page</span
+          >
+        </div>
+
+        <div
+          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          id="navbar-language"
+        >
+          <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
+          >
+            <li>
+              <a
+                href="home"
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="addtocard"
+                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d"
+                >Pricing</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="">
+       <div class="w-full h-56 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+          <h5 class="mb-2 text-3xl font-bold text-gray-900 ">Work fast from anywhere</h5>
+          <p class="mb-5 text-base text-gray-500 sm:text-lg ">Stay up to date and move work forward with Flowbite on iOS & Android. Download the app today.</p>
+          <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+              <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 ">
+                  <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg>
+                  <div class="text-left rtl:text-right">
+                      <div class="mb-1 text-xs">Download on the</div>
+                      <div class="-mt-1 font-sans text-sm font-semibold">Mac App Store</div>
+                  </div>
+              </a>
+              <a href="#" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 ">
+                  <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path></svg>
+                  <div class="text-left rtl:text-right">
+                      <div class="mb-1 text-xs">Get in on</div>
+                      <div class="-mt-1 font-sans text-sm font-semibold">Google Play</div>
+                  </div>
+              </a>
+          </div>
+      </div>  
+      <% /*products.forEach(product => { */%>
+      <div class="flex flex-col">
+        <div
+          class="relative w-full h-28 flex rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg my-10"
+        >
+          <div class="w-[78vw] flex">
+            <div
+              class="relative flex mx-4 my-2 h-24 w-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r"
+            >
+              <img
+                src="<%=/* product.thumbnail */ %>"
+                alt="<%=/* product.title*/ %>"
+                class="bg-cover w-[98%] h-[99%]"
+              />
+              <div class="p-6">
+                <div class="flex justify-between">
+                  <p
+                    class="mb-2 font-sans text-xl font-bold leading-snug tracking-normal text-blue-gray-900 antialiased"
+                  >
+                    <%= /*product.title*/ %>
+                  </p>
+                  <p class="font-bold text-xl">$<%=/* product.price*/ %></p>
+                </div>
+                <p
+                  class="block font-sans text-base font-light leading-relaxed text-inherit antialiased"
+                >
+                  All Produces are same
+                </p>
+              </div>
+            </div>
+            <div class="p-6 pt-0 w-[18vw] mt-9">
+              <a href="addtocart">
+                <button
+                  data-ripple-light="true"
+                  type="button"
+                  class="select-none w-[97%] rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                >
+                  Add to Cart
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <%/* });*/ %>
+      </div>
+
+      <div
+        class=" fixed max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8"
+      >
+        <h5 class="mb-4 text-xl font-medium text-gray-500">Standard plan</h5>
+        <div class="flex items-baseline text-gray-900">
+          <span class="text-3xl font-semibold">$</span>
+          <span class="text-5xl font-extrabold tracking-tight">49</span>
+          <span class="ms-1 text-xl font-normal text-gray-500">/month</span>
+        </div>
+        <ul role="list" class="space-y-5 my-7">
+          <li class="flex items-center">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-blue-700"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >2 team members</span
+            >
+          </li>
+          <li class="flex">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-blue-700"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >20GB Cloud storage</span
+            >
+          </li>
+          <li class="flex">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-blue-700"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >Integration help</span
+            >
+          </li>
+          <li class="flex line-through decoration-gray-500">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >Sketch Files</span
+            >
+          </li>
+          <li class="flex line-through decoration-gray-500">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >API Access</span
+            >
+          </li>
+          <li class="flex line-through decoration-gray-500">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >Complete documentation</span
+            >
+          </li>
+          <li class="flex line-through decoration-gray-500">
+            <svg
+              class="flex-shrink-0 w-4 h-4 text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+              />
+            </svg>
+            <span class="text-base font-normal leading-tight text-gray-500 ms-3"
+              >24×7 phone & email support</span
+            >
+          </li>
+        </ul>
+        <button
+          type="button"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+        >
+          Choose plan
+        </button>
+      </div>
+    </div>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Payment Method</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="fixed w-full p-5 bg-white shadow md:relative  md:flex md:items-center md:justify-between">
+    <div class="flex justify-between items-center">
+        <span class="text-2xl font-[Poppins] cursor-pointer text-cyan-400">
+        <!-- <img class="h-10 inline" src="tailwind-svgrepo-com.svg" alt=""> -->
+        <%=/* producte.title */%> 
+        </span>
+        <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+            <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+         </span>
+    </div>
+    <ul class="md:flex md:items-center z-[-1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
+        <li class="mx-4 my-6 md:my-0">
+            <a href="home" class="text-sm hover:text-cyan-500 duration-500">HOME</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="product" class="text-sm hover:text-cyan-500 duration-500">SERVICE</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-sm hover:text-cyan-500 duration-500">ABOUT</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-sm hover:text-cyan-500 duration-500">CONTACT</a>
+        </li>
+        <li  class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-sm hover:text-cyan-500 duration-500">BLOG'S</a>
+        </li>
+        <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+            Get started
+        </button>
+    </ul>
+</nav>        
+
+  
+<div class="bg-gray-100 flex flex-col items-center justify-center min-h-screen my-7">
+  <div id="cart-container" class="relative w-[70%] overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <tr>
+                <th scope="col" class="px-16 py-3">
+                    <span>Image</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Place
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Adult_no
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Kids_no
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Days_no
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Total_price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Action
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+          <% if (!cart || cart.length === 0) { %>
+            <p>Your cart is empty. <a href="/product">Shop now</a>.</p>
+        <% } else { %>
+            <!-- Render cart items -->
+            <% cart.forEach(item => { %>
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="p-4">
+                    <img src="<%= item.thumbnail %>" class="w-16 md:w-32 max-w-full max-h-full" alt="<%= item.title %>">
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 text-nowrap" id="title">
+                  <span  id="title">
+                    <%= item.title %>
+                  </span>
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900" id="adults_no">
+                  <span id="adults_no">
+                    <%= item.adults_no %>
+                  </span>
+              </td>
+                <td class="px-6 py-4 font-semibold text-gray-900" id="kids_no">
+                  <span id="kids_no">
+                    <%= item.kids_no %>
+                  </span>
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900" id="adults_no">
+                  <span id="adults_no">
+                    <%= item.days_count %>
+                  </span>
+              </td>
+                <td class="px-6 py-4 font-semibold text-gray-900" id="totalCost">
+                  <span id="totalCost">
+                    $<%= item.totalCost %>
+                  </span>
+                </td>
+                <td class="px-6 py-4">
+                  <a href="" class="font-medium text-red-600 hover:underline" onclick="removeFromCart('<%= item.productId %>')">Remove</a>
+
+                </td>
+            </tr>
+            <% }) %>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="mt-7 w-[70%] flex flex-col bg-white rounded-lg p-4 shadow-sm">
+    <h2 class="text-cyan-400 font-bold text-2xl text-center">Personal Details</h2>
+
+    <div class="mt-4 mx-6 flex flex-row space-x-4">
+      <div class="flex-1">
+          <label class="text-cyan-400 text-xl" for="first_name">First Name</label>
+          <input placeholder="First Name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="first_name" type="text">
+      </div>
+
+      <div class="flex-1">
+          <label class="text-cyan-400 text-xl" for="last_name">Last Name</label>
+          <input placeholder="Last Name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="last_name" type="text">
+      </div>
+  </div>
+
+    <div class="mt-4 mx-6">
+        <label class="text-cyan-400 text-xl" for="address">Address</label>
+        <textarea placeholder="Your address" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 focus:ring-cyan-400 focus:border-cyan-400 px-2 py-1" id="address"></textarea>
+    </div>
+
+    <div class="mt-4 mx-6">
+      <label class="text-cyan-400 text-xl" for="payment">Payment Method</label>
+      <!-- <input placeholder="Your name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400 " type="text"> -->
+      <select class="w-full bg-white rounded-md border-gray-300 border text-gray-700 px-2 py-1" id="payment">
+        <option value="">Select a payment method</option>
+        <option value="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="amex">American Express</option>
+        <option value="discover">Discover</option>
+      ...
+    </select>
+  </div>
+
+    <div class="mt-4 mx-6 flex flex-row space-x-4">
+        <div class="flex-1">
+            <label class="text-cyan-400 text-xl" for="city">City</label>
+            <input placeholder="Your city" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="city" type="text">
+        </div>
+
+        <div class="flex-1">
+            <label class="text-cyan-400 text-xl" for="state">State</label>
+            <input placeholder="Your state" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="state" type="text">
+        </div>
+    </div>
+
+    <div class="mt-4 mx-6 flex flex-row space-x-4">
+      <div class="flex-1">
+          <label class="text-cyan-400 text-xl" for="name_on_card">Name on card</label>
+          <input  class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="name_on_card"  name="name_on_card" type="text" placeholder="Jon Smith">
+      </div>
+
+      <div class="flex-1">
+          <label class="text-cyan-400 text-xl" for="card_number" >Card number</label>
+          <input  class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" name="card_number" id="card_number" type="text" placeholder="1234 1234 1234">
+      </div>
+  </div>
+    <div class="mt-4 mx-6 flex flex-row space-x-2">
+        <div class="flex-1">
+            <label class="text-cyan-400 text-xl" for="zip">ZIP</label>
+            <input placeholder="Your ZIP code" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1" id="zip" type="text">
+        </div>
+
+        <div class="flex flex-row space-x-2">
+            <div class="flex-1">
+                <label class="text-cyan-400 text-xl" for="country">Country</label>
+                <select class="w-full bg-white rounded-md border-gray-300 border text-gray-700 px-2 py-1" id="country">
+            <option value="">Select a country</option>
+
+            <optgroup label="Africa">
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Angola">Angola</option>
+                ...
+                <option value="Zimbabwe">Zimbabwe</option>
+            </optgroup>
+
+            <optgroup label="Asia">
+                <option value="Armenia">Armenia</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="Bahrain">Bahrain</option>
+                ...
+                <option value="Yemen">Yemen</option>
+            </optgroup>
+
+            <optgroup label="South America">
+                <option value="Argentina">Argentina</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Brazil">Brazil</option>
+                ...
+                <option value="Venezuela">Venezuela</option>
+            </optgroup>
+
+            ...
+            </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mx-6 flex flex-row space-x-4">
+      <div class="flex-1">
+          <label class="text-cyan-400 text-xl" for="expiry">Expiry</label>
+          <input type="text" name="expiry" id="expiry"  placeholder="MM / YY" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="city" type="text">
+      </div>
+
+      <div class="flex-1">
+          <label class="text-cyan-400 text-xl" for="cvv">Cvv</label>
+          <input placeholder="•••" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" type="password" name="cvv" id="cvv" >
+      </div>
+  </div>
+    <div class=" mt-4 flex justify-center">
+        <button class="w-[95%] bg-cyan-400 text-white rounded-md px-8 py-2 hover:bg-blue-500 hover:text-white transition-all duration-200" type="button" id="personal_information">Submit</button>
+    </div>
+</div>
+</div>
+
+<script>
+
+async function removeFromCart(productId) {
+    try {
+        const response = await fetch(`/remove-from-cart?productId=${productId}`, {
+            method: 'GET',
+        });
+
+        if (response.ok) {
+            // Fetch the updated cart HTML and update the page dynamically
+            const updatedCartHtml = await response.text();
+            document.querySelector('#cart-container').innerHTML = updatedCartHtml;
+        } else {
+            console.error('Failed to remove product');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+const personal_information = document.getElementById("personal_information");
+personal_information.addEventListener("click", async(event) =>{
+        const first_name = document.getElementById("first_name").value;
+        const last_name = document.getElementById("last_name").value;
+        const address = document.getElementById("address").value;
+        const payment = document.getElementById("payment").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
+        const name_on_card = document.getElementById("name_on_card").value;
+        const card_number = document.getElementById("card_number").value;
+        const zip = document.getElementById("zip").value;
+        const country = document.getElementById("country").value;
+        const expiry = document.getElementById("expiry").value;
+        const cvv = document.getElementById("cvv").value;
+        const title = document.getElementById("title").innerText; 
+        const adults_no = document.getElementById("adults_no").innerText;
+        const kids_no =  document.getElementById("kids_no").innerText;
+        const totalCost =   document.getElementById("totalCost").innerText;
+        const Adults_no = parseFloat(adults_no.replace('$', ''));
+        const Kids_no = parseFloat(kids_no.replace('$', ''));
+        const TotalCost = parseFloat(totalCost.replace('$', ''));
+
+    const data = {
+                first_name : first_name,
+                last_name : last_name,
+                address : address,
+                payment : payment,
+                city : city,
+                state : state,
+                name_on_card : name_on_card,
+                card_number : card_number,
+                zip : zip,
+                country : country,
+                expiry : expiry,
+                cvv : cvv,
+                title: title,
+                adults_no: Adults_no,
+                kids_no: Kids_no,
+                totalCost: TotalCost,
+            };
+
+            const validateForm = (data) => {
+            const errors = [];
+            if (!data.first_name) errors.push("First name is required.");
+            if (!data.last_name) errors.push("Last name is required.");
+            if (!data.card_number.match(/^\d{16}$/)) errors.push("Card number must be 16 digits.");
+            if (!data.expiry.match(/^\d{2}\/\d{2}$/)) errors.push("Expiry must be in MM/YY format.");
+            if (!data.cvv.match(/^\d{3}$/)) errors.push("CVV must be 3 digits.");
+
+            return errors;
+            };
+            const errors = validateForm(data);
+            if (errors.length > 0) {
+                alert(errors.join("\n"));
+                return;
+            }
+            try {
+                const response = await fetch('http://localhost:5000/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                console.log('Server Response:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+  
+    // console.log(first_name);
+    // console.log(last_name);
+    // console.log(address);
+    // console.log(payment);
+    // console.log(city);
+    // console.log(state);
+    // console.log(name_on_card);
+    // console.log(card_number);
+    // console.log(zip);
+    // console.log(country);
+    // console.log(expiry);
+    // console.log(cvv);
+
+  });
+
+</script>
+</body>
+</html>
