@@ -635,12 +635,13 @@ personal_information.addEventListener("click", async(event) =>{
                 });
 
                 const result = await response.json();
-                console.log('Server Response:', result);
+                window.location.href = `/home`;
+                // console.log('Server Response:', result);
             } catch (error) {
                 console.error('Error:', error);
             }
   
-    console.log(data);
+    // console.log(data);
     // console.log(last_name);
     // console.log(address);
     // console.log(payment);
