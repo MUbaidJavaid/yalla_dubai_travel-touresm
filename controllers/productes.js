@@ -10,6 +10,8 @@ async function gethome(req, res) {
   try {
     // Fetch all products from the database
     const products = await Productes.find({});
+    // console.log(products);
+    
    // Fetch distinct cities along with their images
    const distinctCities = await Productes.aggregate([
     {
