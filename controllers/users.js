@@ -1,30 +1,59 @@
-const { collection } = require("../models/users");
+// ============ Builtin imports Start ================
+
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
-// Using a predefined secret key for JWT token
+
+
+// ============ Builtin imports end ================
+
+// ============ User define imports Start ================
+
+const { collection } = require("../models/users");
+
+// ============ User define imports end  ================
+
+
+// ============ Using a predefined secret key for JWT token =============
+
 const secretKey = "Ubaid_secret"; // This should be stored in a secure environment
 
-// auth user post
+
+// ============= auth user post function ================
+
 function postauth(req, res) {
   const user = req.user;
   res.status(200).json({ user });
 }
 
-// login get
+
+// =============== login get function Start ================
+
 function getlogin(req, res) {
   res.render("login");
 }
-//signup get
+
+// =============== login get function end ================
+
+// ============== signup get function Start ================
+
 function getsignup(req, res) {
   res.render("signup");
 }
-// admin get
+
+// ============== signup get function end ================
+
+// ============= admin get function Start ================
+
 function getadmin(req, res) {
   res.render("admin");
 }
 
-// post signup
+// ============= admin get function end ================
+
+// ============= post signup function Start ================
+
 async function postsignup(req, res) {
   try {
     // Create user data from request body
@@ -35,7 +64,7 @@ async function postsignup(req, res) {
       role: "user",
     };
 
-    // exist user
+    //  exist user 
     const existuser = await collection.findOne({ email: data.email });
 
     if (existuser != null) {
@@ -55,6 +84,11 @@ async function postsignup(req, res) {
     });
   }
 }
+
+// ============== post signup function end ================
+
+
+// ============== post login function Start ================
 
 async function postget(req, res) {
   try {
@@ -107,6 +141,10 @@ async function postget(req, res) {
     return res.status(500).send("An error occurred while logging in"); // General error message
   }
 }
+
+// ============== post login function end ================
+
+// ============== Module Exports ================
 
 module.exports = {
   postauth,

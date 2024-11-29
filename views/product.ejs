@@ -36,9 +36,9 @@
   <body class="bg-gray-100">
     <nav class="fixed w-full p-5 bg-white shadow md:relative  md:flex md:items-center md:justify-between">
       <div class="flex justify-between items-center">
-          <span class="text-2xl font-[Poppins] cursor-pointer text-cyan-400">
+          <span class="text-2xl font-[Poppins] cursor-pointer text-[#060840]">
           <!-- <img class="h-10 inline" src="tailwind-svgrepo-com.svg" alt=""> -->
-          <%= product.title %> 
+          <%= producte.title %> 
           </span>
           <span class="text-3xl cursor-pointer mx-2 md:hidden block">
               <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
@@ -60,7 +60,7 @@
           <li  class="mx-4 my-6 md:my-0">
               <a href="#" class="text-sm hover:text-cyan-500 duration-500">BLOG'S</a>
           </li>
-          <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+          <button class="bg-[#060840] text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
               Get started
           </button>
       </ul>
@@ -71,22 +71,32 @@
           <!-- <h1>
             <%= /*product.id */ %>
           </h1> -->
-           <img src="<%= product.thumbnail %>" alt="<%= product.title %>" class="bg-cover w-[100%] h-[50vh] rounded-lg">
+           <img src="<%= producte.thumbnail[0] %>" alt="<%= producte.title %>" class="bg-cover w-[100%] h-[50vh] rounded-lg">
+           <div class="w-[100%] flex justify-around my-2">
+            <img src="<%= producte.thumbnail[0] %>" alt="<%= producte.title %>" class="bg-cover w-[30%] h-[18vh] rounded-lg">
+           <img src="<%= producte.thumbnail[1] %>" alt="<%= producte.title %>" class="bg-cover w-[30%] h-[18vh] rounded-lg">
+           <img src="<%= producte.thumbnail[2] %>" alt="<%= producte.title %>" class="bg-cover w-[30%] h-[18vh] rounded-lg">
+          </div>
         </div>
         <!-- <p>Product ID: <%= /* product.id */ %></p> -->
-            <p  class="mb-2  font-serif text-xl font-bold leading-snug tracking-normal text-cyan-400 antialiased  mx-7">Product Name: <span class="text-xl font-medium text-gray-700"><%= product.title %></span></p>
-            <p class="font-bold mb-2  text-xl mx-7 text-cyan-400  font-serif">Product Price: <span id="price" class="text-xl font-medium text-gray-700">$<%= product.price %></span></p>
-            <p class="font-bold mb-2  text-xl mx-7 text-cyan-400  font-serif">Adult Price: <span id="mySpan1" class="text-xl font-medium text-gray-700">$<%= product.adultBaseprice %></span></p>
-            <p class="font-bold mb-2  text-xl mx-7 text-cyan-400  font-serif">Kids Price: <span id="mySpan2"  class="text-xl font-medium text-gray-700">$<%= product.kidsBaseprice %></span></p>
-            <p class="font-bold   text-xl mx-7 text-cyan-400  font-serif">Day Price: <span id="mySpan3"  class="text-xl font-medium text-gray-700">$<%= product.dayBaseprice %></span></p>
+            <p  class="mb-2  font-serif text-xs font-bold leading-snug tracking-normal text-[#060840] antialiased  mx-7">Name: <span class="text-xs font-medium text-gray-700"><%= producte.title %></span></p>
+            <p  class="mb-2  font-serif text-xs font-bold leading-snug tracking-normal text-[#060840] antialiased  mx-7">Discription: <span class="text-xs font-medium text-gray-700"><%= producte.discription %></span></p>
+            <p class="font-bold mb-2  text-xs mx-7 text-[#060840]  font-serif">Price: <span id="price" class="text-xs font-medium text-gray-700">$<%= producte.price %></span></p>
+            <p class="font-bold mb-2  text-xs mx-7 text-[#060840]  font-serif">Adult Price: <span id="mySpan1" class="text-xs font-medium text-gray-700">$<%= producte.adultBaseprice %></span></p>
+            <p class="font-bold mb-2  text-xs mx-7 text-[#060840]  font-serif">Kids Price: <span id="mySpan2"  class="text-xs font-medium text-gray-700">$<%= producte.kidsBaseprice %></span></p>
+            <p class="font-bold   text-xs mx-7 text-[#060840]  font-serif">Day Price: <span id="mySpan3"  class="text-xs font-medium text-gray-700">$<%= producte.dayBaseprice %></span></p>
+            <p class="font-bold   text-xs mx-7 text-[#060840]  font-serif">Tour Service: <span id="mySpan3"  class="text-xs font-medium text-gray-700"><%= producte.tourService %></span></p>
+            <p class="font-bold   text-xs mx-7 text-[#060840]  font-serif">Duration: <span id="mySpan3"  class="text-xs font-medium text-gray-700"><%= producte.duration %></span></p>
+            <p class="font-bold   text-xs mx-7 text-[#060840]  font-serif">Transport Service: <span id="mySpan3"  class="text-xs font-medium text-gray-700"><%= producte.transportService %></span></p>
+            <p class="font-bold   text-xs mx-7 text-[#060840]  font-serif">Pick Up: <span id="mySpan3"  class="text-xs font-medium text-gray-700"><%= producte.pickUp %></span></p>
       </div>
       <div class=" my-14 md:mt-6 mx-9 md:w-[25vw]">
         <form action="/cart" method="post">
           <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
-            <h5 class="mb-4 text-xl font-medium text-gray-500 "><%= product.title %></h5>
+            <h5 class="mb-4 text-xl font-medium text-gray-500 "><%= producte.title %></h5>
             <div class="flex items-baseline text-gray-900 ">
-                <span class="text-4xl font-semibold text-cyan-400">$</span>
-                <span class="text-5xl font-extrabold tracking-tight text-cyan-400"><%= product.price %></span>
+                <span class="text-4xl font-semibold text-[#060840]">$</span>
+                <span class="text-5xl font-extrabold tracking-tight text-[#060840]"><%= producte.price %></span>
                 <span class="ms-1 text-xl font-normal text-gray-500  ">/day</span>
             </div>
           <div>
@@ -94,7 +104,7 @@
                 <div class="flex flex-col w-full gap-4 md:flex-row">
                     <div class="relative w-full">
                         <input type="number" id="adults_no" name="adults"
-                            class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:outline-none focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                            class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:outline-none focus:ring-[#060840] focus:border-[#060840] focus:border-fcbutton peer"
                             placeholder=" " value="1" min="1" />
                         <label for="adults"
                             class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Adults no.</label>
@@ -105,7 +115,7 @@
               <div class="flex flex-col w-full gap-4 md:flex-row">
                   <div class="relative w-full">
                       <input type="number" id="kids_no" name="kids"
-                          class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                          class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-[#060840] focus:border-[#060840]focus:border-fcbutton peer"
                           placeholder=" " value="1" min="1" />
                       <label for="kids"
                           class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Kids no.</label>
@@ -116,7 +126,7 @@
               <div class="flex flex-col w-full gap-4 md:flex-row">
                   <div class="relative w-full">
                       <input type="datetime-local" id="check_in_date" name="task_starting_date"
-                          class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                          class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-[#060840] focus:border-[#060840] focus:border-fcbutton peer"
                           placeholder=" " />
                       <label for="task_starting_date"
                           class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Check in:</label>
@@ -127,7 +137,7 @@
             <div class="flex flex-col w-full gap-4 md:flex-row">
                 <div class="relative w-full">
                     <input type="datetime-local" id="check_out_date" name="task_starting_date"
-                        class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+                        class="block px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-[#060840] focus:border-[#060840] focus:border-fcbutton peer"
                         placeholder=" " />
                     <label for="task_starting_date"
                         class="absolute text-sm font-medium text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#1F2937] peer-focus:dark:text-[#1F2937] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">Check out:</label>
@@ -136,12 +146,12 @@
             </div>
 
             <input type="number" id="total_no" name="adults"
-            class="block mt-4 px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-cyan-400 focus:border-cyan-400 focus:border-fcbutton peer"
+            class="block mt-4 px-2.5 pb-2.5 pt-2.5 w-full text-sm font-medium text-gray-600 bg-transparent rounded-lg border-1 appearance-none border-gray-300 focus:ring-[#060840] focus:border-[#060840] focus:border-fcbutton peer"
             placeholder=" " />
 
-            <button id="button" type="button" class="text-cyan-400 mt-5 bg-white hover:text-white hover:bg-cyan-600 ring-4 outline-none ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"  data-id="<%= product._id %>" >Calculate Price</button>
+            <button id="button" type="button" class="text-[#060840] mt-5 bg-white hover:text-white hover:bg-[#060840] ring-4 outline-none ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"  data-id="<%= producte.id %>" >Calculate Price</button>
 
-            <button id="button_1" type="button" class="text-white mt-5 bg-cyan-400 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"  data-id="<%= product._id %>" >Add to cart</button>
+            <button id="button_1" type="button" class="text-white mt-5 bg-[#060840] hover:bg-[#060840] focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"  data-id="<%= producte.id %>" >Add to cart</button>
             </div>    
           </div>
         </form>
@@ -203,6 +213,7 @@
         const dayMs = check_out-check_in;
         const daysCount = Math.floor(dayMs / (1000 * 60 * 60 * 24));
         const url = `product/?id=${productId}`;
+console.log(daysCount);
 
         if (!productId || isNaN(Adults) || isNaN(kids) || dayMs <= 0) {
         alert("Please ensure all fields are correctly filled and valid.");

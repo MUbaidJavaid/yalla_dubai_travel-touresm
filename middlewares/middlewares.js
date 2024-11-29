@@ -1,10 +1,23 @@
+// ============ Builtin imports Start ================
+
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
 
-// Using a predefined secret key for JWT token
+// ============ Builtin imports end ================
+
+
+
+// ==================== Using a predefined secret key for JWT token ==================
+
+
 const secretKey = "Ubaid_secret"; // This should be stored in a secure environment
 
-// Middleware to validate email
+
+
+// =================== Middleware to validate email Start ====================
+
+
+
 const emailValidator = (req, res, next) => {
   const email = req.body.email;
 
@@ -14,6 +27,13 @@ const emailValidator = (req, res, next) => {
 
   next(); // Proceed to the next middleware/route
 };
+
+
+// =================== Middleware to validate email end ====================
+
+
+// =================== Middleware to Auth JWT and Role Start ====================
+
 
 const authJWTandRole = (role) => {
   return (req, res, next) => {
@@ -28,7 +48,7 @@ const authJWTandRole = (role) => {
 
     // Check if token exists in the cookie
     if (!token) {
-      return res.status(403).send("Access denied. No token provided.");
+      return res.redirect("/login");
     }
 
     try {
@@ -45,6 +65,13 @@ const authJWTandRole = (role) => {
     }
   };
 };
+
+
+// =================== Middleware to Auth JWT and Role end ====================
+
+
+// =================== Middleware to Authenticate JWT Start ====================
+
 
 // A same middleware that only validates the token and does not check the role
 const authenticateJWT = (req, res, next) => {
@@ -72,6 +99,11 @@ const authenticateJWT = (req, res, next) => {
     return res.status(403).send("Invalid token");
   }
 };
+
+// =================== Middleware to Authenticate JWT end ====================
+
+
+// =================== Middleware module exports ====================
 
 module.exports = {
   emailValidator,

@@ -30,19 +30,19 @@
     <div
       class="max-w-sm mx-auto border w-[50vw] h-[75vh] my-14 rounded-md shadow-lg"
     >
-      <h2 class="text-center font-bold mt-4 text-3xl text-cyan-400">Signup</h2>
+      <h2 class="text-center font-bold mt-4 text-3xl text-[#060840]">Signup</h2>
       <form action="/signup" method="post" class="mx-10 my-5">
         <div class="mb-5">
           <label
             for="email"
-            class="block mb-2 text-lg font-medium text-cyan-400"
+            class="block mb-2 text-lg font-medium text-[#060840]"
             >Your Name:</label
           >
           <input
             type="text"
             id="name"
             name="username"
-            class="bg-gray-50 border w-[95%] border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-400 block px-2.5"
+            class="bg-gray-50 border w-[95%] border-gray-300 text-[#060840] text-sm rounded-lg focus:ring-[#060840] focus:border-[#060840] block px-2.5"
             placeholder="Enter your name"
             required
             autocomplete="off"
@@ -51,14 +51,14 @@
         <div class="mb-5">
           <label
             for="email"
-            class="block mb-2 text-lg font-medium text-cyan-400"
+            class="block mb-2 text-lg font-medium text-[#060840]"
             >Your Email:</label
           >
           <input
             type="email"
             id="email"
             name="email"
-            class="bg-gray-50 border w-[95%] border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-400 block px-2.5"
+            class="bg-gray-50 border w-[95%] border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-[#060840] focus:border-[#060840] block px-2.5"
             placeholder="example@gmail.com"
             required
             autocomplete="off"
@@ -69,26 +69,34 @@
             for="password"
             id="password"
             name="password"
-            class="block mb-2 text-lg font-medium text-cyan-400"
+            class="block mb-2 text-lg font-medium text-[#060840]"
             >Your password:</label
           >
           <input
             type="password"
             id="password"
             name="password"
-            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-400 block w-[95%] px-3.5"
+            class="bg-gray-50 border border-gray-300 text-[#060840] text-sm rounded-lg focus:ring-[#060840] focus:border-[#060840] block w-[95%] px-3.5"
             placeholder="Password"
             required
           />
         </div>
-        <a href="./login">
+        <a href="login">
           <button
             type="submit"
-            class="text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-cyan-600 font-medium rounded-lg text-sm w-full sm:w-[95%] px-14 py-2.5 text-center"
+            class="text-white bg-[#060840] hover:bg-cyan-500 focus:ring-4 focus:outline-none focus:ring-cyan-600 font-medium rounded-lg text-sm w-full sm:w-[95%] px-14 py-2.5 text-center"
           >
             SignUp
           </button>
         </a>
+        <p class="text-xs mb-4 ml-10">
+          If you already have an account?
+        <a
+        class="font-semibold text-[#060840] hover:text-[#060840] transition-all text-xs mt-1 duration-200"
+        href="login"
+        >Login</a
+      >
+      </p>
       </form>
     </div>
     <script></script>

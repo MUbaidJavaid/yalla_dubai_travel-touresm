@@ -1,38 +1,40 @@
-// const mongoose = require("mongoose");
-
-// const Productesschema = new mongoose.Schema({
-//   _id: {
-//      type: String,
-//   },
-//   title: {
-//     type: String,
-//   },
-//   price: {
-//     type: Number,
-//   },
-//   thumbnail: {
-//     type: String,
-//   },
-// });
-
-// const Productes = new mongoose.model("Product", Productesschema);
-// module.exports = {
-//   Productes,
-// };
-
-
-
-// ========
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
   id: {
     type: Number,
-    required: true,
-    unique: true
+    default: true,
+  },
+  cityName:  {
+    type: String,
+    required: true
+  },
+  cityImage:  {
+    type: String,
+    required: true
+  },
+  tourService: {
+    type: String,
+    required: true
+  },
+  duration: {
+    type: String,
+    required: true
+  },
+  transportService:  {
+    type: String,
+    required: true
+  },
+  pickUp:  {
+    type: String,
+    required: true
   },
   title: {
     type: String,
+    required: true
+  },
+  discription:{
+    type:String,
     required: true
   },
   price: {
@@ -56,7 +58,7 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   thumbnail: {
-    type: String,
+    type: [String],
     required: true,
     validate: {
       validator: function(url) {

@@ -27,7 +27,7 @@
       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="./output.css" rel="stylesheet">
-    <title>Home Page</title>
+    <title>City Details</title>
 </head>
 <body class=" font-[Poppins]  bg-gray-100">
 
@@ -35,7 +35,7 @@
     <div class="flex justify-between items-center">
         <span class="text-2xl font-[Poppins] cursor-pointer text-[#060840]">
         <!-- <img class="h-10 inline" src="tailwind-svgrepo-com.svg" alt=""> -->
-         Home Page
+        <%= cityName %>
         </span>
         <span class="text-3xl cursor-pointer mx-2 md:hidden block">
             <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
@@ -57,19 +57,17 @@
         <li  class="mx-4 my-6 md:my-0">
             <a href="#" class="text-sm hover:text-cyan-500 duration-500">BLOG'S</a>
         </li>
-        <a href="login">
         <button class="bg-[#060840] text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
-            Login
+            Get started
         </button>
-      </a>
     </ul>
 </nav>
     <div id="home" class=" text-center text-6xl font-bold mt-28">
-        <h1 class="text-[#060840] place-content-center ">Welcome to Home page</h1>
+        <h1 class="text-[#060840] place-content-center "><%= cityName %></h1>
         <p class="text-[#060840] text-xl font-medium mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, necessitatibus quaerat </p>
     </div>
 <div id="main" class="flex flex-wrap justify-around my-10 mx-10 gap-10">
-  <% products.forEach(product => { %>
+  <% producte.forEach(product => { %>
   <div class="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-[#060840] shadow-lg my-10 ">
     <div class="relative mx-4 my-4 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r ">
       <img src="<%= product.thumbnail[0] %>" alt="<%= product.title %>" class="bg-cover w-[98%] h-[99%]" />
@@ -94,43 +92,8 @@
   </div>
   <% }); %>
 </div>
-
-<div id="city" class="flex flex-wrap justify-around my-10 mx-10 gap-10">
-  <% distinctCities.forEach(city => { %>
-  <div
-    class="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-[#060840] shadow-lg my-10"
-    data-city="<%= city.cityName %>">
-    <div
-      class="relative mx-4 my-4 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r">
-      <img src="<%= city.cityImage %>" alt="<%= city.cityName %>" class="bg-cover w-[98%] h-[99%]" />
-    </div>
-    <p
-      class="relative ml-3 mb-2 font-sans text-xl font-bold leading-snug tracking-normal text-[#060840] antialiased">
-      <%= city.cityName %>
-    </p>
-  </div>
-  <% }); %>
 </div>
-
 <script>
-const cityContainer = document.getElementById("city");
-
-cityContainer.addEventListener("click", (event) => {
-  // Traverse up the DOM to find the closest element with `data-city`
-  const cityCard = event.target.closest("[data-city]");
-
-  // If no such element exists, exit
-  if (!cityCard) return;
-
-  // Extract the `cityName` from the `data-city` attribute
-  const cityName = cityCard.getAttribute("data-city");
-
-  // Navigate to the corresponding URL
-  window.location.href = `/city?cityName=${cityName}`;
-});
-
-
-
   // Add functionality to "Add to Cart" buttons
   document.querySelectorAll(".add-to-cart").forEach((button) => {
     button.addEventListener("click", (event) => {

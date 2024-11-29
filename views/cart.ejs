@@ -301,9 +301,9 @@
 <body class="bg-gray-100">
   <nav class="fixed w-full p-5 bg-white shadow md:relative  md:flex md:items-center md:justify-between">
     <div class="flex justify-between items-center">
-        <span class="text-2xl font-[Poppins] cursor-pointer text-cyan-400">
+        <span class="text-2xl font-[Poppins] cursor-pointer text-[#060840]">
+          Add to Cart
         <!-- <img class="h-10 inline" src="tailwind-svgrepo-com.svg" alt=""> -->
-        <%=/* producte.title */%> 
         </span>
         <span class="text-3xl cursor-pointer mx-2 md:hidden block">
             <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
@@ -325,7 +325,7 @@
         <li  class="mx-4 my-6 md:my-0">
             <a href="#" class="text-sm hover:text-cyan-500 duration-500">BLOG'S</a>
         </li>
-        <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+        <button class="bg-[#060840] text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
             Get started
         </button>
     </ul>
@@ -333,9 +333,9 @@
 
   
 <div class="bg-gray-100 flex flex-col items-center justify-center min-h-screen my-7">
-  <div id="cart-container" class="relative w-[70%] overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+  <div id="cart-container" class="relative w-[95%] overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-[#060840] ">
+        <thead class="text-xs text-[#060840] uppercase bg-gray-50 ">
             <tr>
                 <th scope="col" class="px-16 py-3">
                     <span>Image</span>
@@ -370,67 +370,82 @@
             <% cart.forEach(item => { %>
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="p-4">
-                    <img src="<%= item.thumbnail %>" class="w-16 md:w-32 max-w-full max-h-full" alt="<%= item.title %>">
+                    <img src="<%= item.thumbnail[0] %>" class="w-16 md:w-32 max-w-full max-h-full" alt="<%= item.title %>">
                 </td>
-                <td class="px-6 py-4 font-semibold text-gray-900 text-nowrap" id="title">
+                <td class="px-6 py-4 font-semibold text-[#060840] text-nowrap" id="title">
                   <span  id="title">
                     <%= item.title %>
                   </span>
                 </td>
-                <td class="px-6 py-4 font-semibold text-gray-900" id="adults_no">
+                <td class="px-6 py-4 font-semibold text-[#060840]" id="adults_no">
                   <span id="adults_no">
                     <%= item.adults_no %>
                   </span>
               </td>
-                <td class="px-6 py-4 font-semibold text-gray-900" id="kids_no">
+                <td class="px-6 py-4 font-semibold text-[#060840]" id="kids_no">
                   <span id="kids_no">
                     <%= item.kids_no %>
                   </span>
                 </td>
-                <td class="px-6 py-4 font-semibold text-gray-900" id="adults_no">
+                <td class="px-6 py-4 font-semibold text-[#060840]" id="adults_no">
                   <span id="adults_no">
                     <%= item.days_count %>
                   </span>
               </td>
-                <td class="px-6 py-4 font-semibold text-gray-900" id="totalCost">
+                <td class="px-6 py-4 font-semibold text-[#060840]" id="totalCost">
                   <span id="totalCost">
                     $<%= item.totalCost %>
                   </span>
                 </td>
                 <td class="px-6 py-4">
                   <a href="" class="font-medium text-red-600 hover:underline" onclick="removeFromCart('<%= item.productId %>')">Remove</a>
-
                 </td>
             </tr>
             <% }) %>
         <% } %>
         </tbody>
+        <tfoot>
+          <tr class="font-semibold text-[#060840] ">
+            <td class="px-6 py-3 ">
+              <a href="home">
+                <button class="bg-[#060840] text-nowrap text-white font-[Poppins] duration-500 px-6 py-4  hover:bg-[#060840] rounded">
+                 < Continus Shopping
+              </button>
+              </a>
+            </td>
+              <td class="px-6 py-3 "></td>
+              <td class="px-6 py-3 "></td>
+              <th scope="row" class="px-6 py-3 text-xl">Total</th>
+              <td class="px-6 py-3 "></td>
+              <td class="px-6 py-3">21,000</td>
+          </tr>
+      </tfoot>
     </table>
 </div>
 
 
 <div class="mt-7 w-[70%] flex flex-col bg-white rounded-lg p-4 shadow-sm">
-    <h2 class="text-cyan-400 font-bold text-2xl text-center">Personal Details</h2>
+    <h2 class="text-[#060840] font-bold text-2xl text-center">Personal Details</h2>
 
     <div class="mt-4 mx-6 flex flex-row space-x-4">
       <div class="flex-1">
-          <label class="text-cyan-400 text-xl" for="first_name">First Name</label>
-          <input placeholder="First Name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="first_name" type="text">
+          <label class="text-[#060840] text-xl" for="first_name">First Name</label>
+          <input placeholder="First Name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" id="first_name" type="text">
       </div>
 
       <div class="flex-1">
-          <label class="text-cyan-400 text-xl" for="last_name">Last Name</label>
-          <input placeholder="Last Name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="last_name" type="text">
+          <label class="text-[#060840] text-xl" for="last_name">Last Name</label>
+          <input placeholder="Last Name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" id="last_name" type="text">
       </div>
   </div>
 
     <div class="mt-4 mx-6">
-        <label class="text-cyan-400 text-xl" for="address">Address</label>
-        <textarea placeholder="Your address" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 focus:ring-cyan-400 focus:border-cyan-400 px-2 py-1" id="address"></textarea>
+        <label class="text-[#060840] text-xl" for="address">Address</label>
+        <textarea placeholder="Your address" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 focus:ring-[#060840] focus:border-[#060840] px-2 py-1" id="address"></textarea>
     </div>
 
     <div class="mt-4 mx-6">
-      <label class="text-cyan-400 text-xl" for="payment">Payment Method</label>
+      <label class="text-[#060840] text-xl" for="payment">Payment Method</label>
       <!-- <input placeholder="Your name" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400 " type="text"> -->
       <select class="w-full bg-white rounded-md border-gray-300 border text-gray-700 px-2 py-1" id="payment">
         <option value="">Select a payment method</option>
@@ -444,36 +459,36 @@
 
     <div class="mt-4 mx-6 flex flex-row space-x-4">
         <div class="flex-1">
-            <label class="text-cyan-400 text-xl" for="city">City</label>
-            <input placeholder="Your city" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="city" type="text">
+            <label class="text-[#060840] text-xl" for="city">City</label>
+            <input placeholder="Your city" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" id="city" type="text">
         </div>
 
         <div class="flex-1">
-            <label class="text-cyan-400 text-xl" for="state">State</label>
-            <input placeholder="Your state" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="state" type="text">
+            <label class="text-[#060840]cyan-400 text-xl" for="state">State</label>
+            <input placeholder="Your state" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" id="state" type="text">
         </div>
     </div>
 
     <div class="mt-4 mx-6 flex flex-row space-x-4">
       <div class="flex-1">
-          <label class="text-cyan-400 text-xl" for="name_on_card">Name on card</label>
-          <input  class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="name_on_card"  name="name_on_card" type="text" placeholder="Jon Smith">
+          <label class="text-[#060840] text-xl" for="name_on_card">Name on card</label>
+          <input  class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" id="name_on_card"  name="name_on_card" type="text" placeholder="Jon Smith">
       </div>
 
       <div class="flex-1">
-          <label class="text-cyan-400 text-xl" for="card_number" >Card number</label>
-          <input  class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" name="card_number" id="card_number" type="text" placeholder="1234 1234 1234">
+          <label class="text-[#060840] text-xl" for="card_number" >Card number</label>
+          <input  class="w-full bg-white rounded-md border-gray-300 border text-gray-700 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" name="card_number" id="card_number" type="text" placeholder="1234 1234 1234">
       </div>
   </div>
     <div class="mt-4 mx-6 flex flex-row space-x-2">
         <div class="flex-1">
-            <label class="text-cyan-400 text-xl" for="zip">ZIP</label>
-            <input placeholder="Your ZIP code" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1" id="zip" type="text">
+            <label class="text-[#060840] text-xl" for="zip">ZIP</label>
+            <input placeholder="Your ZIP code" class="w-full bg-white rounded-md border-gray-300 border text-gray-700 px-2 py-1" id="zip" type="text">
         </div>
 
         <div class="flex flex-row space-x-2">
             <div class="flex-1">
-                <label class="text-cyan-400 text-xl" for="country">Country</label>
+                <label class="text-[#060840] text-xl" for="country">Country</label>
                 <select class="w-full bg-white rounded-md border-gray-300 border text-gray-700 px-2 py-1" id="country">
             <option value="">Select a country</option>
 
@@ -509,17 +524,17 @@
 
     <div class="mt-4 mx-6 flex flex-row space-x-4">
       <div class="flex-1">
-          <label class="text-cyan-400 text-xl" for="expiry">Expiry</label>
-          <input type="text" name="expiry" id="expiry"  placeholder="MM / YY" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" id="city" type="text">
+          <label class="text-[#060840] text-xl" for="expiry">Expiry</label>
+          <input type="text" name="expiry" id="expiry"  placeholder="MM / YY" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" id="city" type="text">
       </div>
 
       <div class="flex-1">
-          <label class="text-cyan-400 text-xl" for="cvv">Cvv</label>
-          <input placeholder="•••" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-cyan-400 focus:border-cyan-400" type="password" name="cvv" id="cvv" >
+          <label class="text-[#060840] text-xl" for="cvv">Cvv</label>
+          <input placeholder="•••" class="w-full bg-white rounded-md border-gray-300 border text-gray-800 px-2 py-1 focus:ring-[#060840] focus:border-[#060840]" type="password" name="cvv" id="cvv" >
       </div>
   </div>
     <div class=" mt-4 flex justify-center">
-        <button class="w-[95%] bg-cyan-400 text-white rounded-md px-8 py-2 hover:bg-blue-500 hover:text-white transition-all duration-200" type="button" id="personal_information">Submit</button>
+        <button class="w-[95%] bg-[#060840] text-white rounded-md px-8 py-2 hover:bg-[#060840] hover:text-white transition-all duration-200" type="button" id="personal_information">Submit</button>
     </div>
 </div>
 </div>
@@ -536,8 +551,10 @@ async function removeFromCart(productId) {
             // Fetch the updated cart HTML and update the page dynamically
             const updatedCartHtml = await response.text();
             document.querySelector('#cart-container').innerHTML = updatedCartHtml;
+        } else if (result.cart.length === 0) {
+            window.location.href = '/home';
         } else {
-            console.error('Failed to remove product');
+            button.closest('tr').remove();
         }
     } catch (error) {
         console.error('Error:', error);
@@ -546,18 +563,18 @@ async function removeFromCart(productId) {
 
 const personal_information = document.getElementById("personal_information");
 personal_information.addEventListener("click", async(event) =>{
-        const first_name = document.getElementById("first_name").value;
-        const last_name = document.getElementById("last_name").value;
-        const address = document.getElementById("address").value;
-        const payment = document.getElementById("payment").value;
-        const city = document.getElementById("city").value;
-        const state = document.getElementById("state").value;
-        const name_on_card = document.getElementById("name_on_card").value;
-        const card_number = document.getElementById("card_number").value;
-        const zip = document.getElementById("zip").value;
-        const country = document.getElementById("country").value;
-        const expiry = document.getElementById("expiry").value;
-        const cvv = document.getElementById("cvv").value;
+        const first_name = document.getElementById("first_name")?.value.trim();
+        const last_name = document.getElementById("last_name")?.value.trim();
+        const address = document.getElementById("address")?.value.trim();
+        const payment = document.getElementById("payment")?.value.trim();
+        const city = document.getElementById("city")?.value.trim();
+        const state = document.getElementById("state")?.value.trim();
+        const name_on_card = document.getElementById("name_on_card")?.value.trim();
+        const card_number = document.getElementById("card_number")?.value.trim();
+        const zip = document.getElementById("zip")?.value.trim();
+        const country = document.getElementById("country")?.value.trim();
+        const expiry = document.getElementById("expiry")?.value.trim();
+        const cvv = document.getElementById("cvv")?.value.trim();
         const title = document.getElementById("title").innerText; 
         const adults_no = document.getElementById("adults_no").innerText;
         const kids_no =  document.getElementById("kids_no").innerText;
@@ -570,11 +587,11 @@ personal_information.addEventListener("click", async(event) =>{
                 first_name : first_name,
                 last_name : last_name,
                 address : address,
-                payment : payment,
+                payment_Method : payment,
                 city : city,
                 state : state,
-                name_on_card : name_on_card,
-                card_number : card_number,
+                name_On_Card : name_on_card,
+                card_Number : card_number,
                 zip : zip,
                 country : country,
                 expiry : expiry,
@@ -584,14 +601,22 @@ personal_information.addEventListener("click", async(event) =>{
                 kids_no: Kids_no,
                 totalCost: TotalCost,
             };
-
+            console.log(data);
             const validateForm = (data) => {
             const errors = [];
             if (!data.first_name) errors.push("First name is required.");
             if (!data.last_name) errors.push("Last name is required.");
-            if (!data.card_number.match(/^\d{16}$/)) errors.push("Card number must be 16 digits.");
-            if (!data.expiry.match(/^\d{2}\/\d{2}$/)) errors.push("Expiry must be in MM/YY format.");
-            if (!data.cvv.match(/^\d{3}$/)) errors.push("CVV must be 3 digits.");
+            if (!data.card_Number || !data.card_Number.match(/^\d{16}$/)) {
+             errors.push("Card number must be 16 digits.");
+            }
+
+            if (!data.expiry || !data.expiry.match(/^\d{2}\/\d{2}$/)) {
+                errors.push("Expiry must be in MM/YY format.");
+            }
+
+            if (!data.cvv || !data.cvv.match(/^\d{3}$/)) {
+                errors.push("CVV must be 3 digits.");
+            }
 
             return errors;
             };
@@ -615,7 +640,7 @@ personal_information.addEventListener("click", async(event) =>{
                 console.error('Error:', error);
             }
   
-    // console.log(first_name);
+    console.log(data);
     // console.log(last_name);
     // console.log(address);
     // console.log(payment);
