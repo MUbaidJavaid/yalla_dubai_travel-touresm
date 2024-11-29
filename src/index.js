@@ -63,12 +63,12 @@ console.log('Script is running');
 
 
 // connecction
-connectMongoDB("mongodb://127.0.0.1:27017/login")
+connectMongoDB("mongodb://127.0.0.1:27017/yalla_clone")
   .then(() => console.log("Mongo connected!"))
   .catch((err) => console.log("Err: ", err));
   const store = new mongoDbSession({
-    uri: 'mongodb://127.0.0.1:27017/login',
-    collection: "mySession"
+    uri: 'mongodb://127.0.0.1:27017/yalla_clone',
+    collection: "sessions"
 });
 
 // ============== mongoDB connection end =================
