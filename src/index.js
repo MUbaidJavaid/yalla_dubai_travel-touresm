@@ -64,7 +64,7 @@ console.log('Script is running');
 
 // connecction
 // connectMongoDB("mongodb://127.0.0.1:27017/yalla_clone")
-connectMongoDB("mongodb+srv://mubaid:ubaid@cluster0.s2okg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/yalla_clone")
+connectMongoDB("mongodb://localhost:27017/yalla_clone")
   .then(() => console.log("Mongo connected!"))
   .catch((err) => console.log("Err: ", err));
 //   const store = new mongoDbSession({
@@ -72,7 +72,7 @@ connectMongoDB("mongodb+srv://mubaid:ubaid@cluster0.s2okg.mongodb.net/?retryWrit
 //     collection: "sessions"
 // });
   const store = new mongoDbSession({
-    uri: 'mongodb+srv://mubaid:ubaid@cluster0.s2okg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/yalla_clone',
+    uri: 'mongodb://localhost:27017/yalla_clone',
     collection: "sessions"
 });
 
