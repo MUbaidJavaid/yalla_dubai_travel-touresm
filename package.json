@@ -17,7 +17,7 @@
     "cross-spawn": "^7.0.6",
     "ejs": "^3.1.10",
     "events": "^3.3.0",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.2",
