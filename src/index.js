@@ -8,6 +8,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 const mongoDbSession = require('connect-mongodb-session')(session);
+const { execFile } = require('child_process');
 
 // ============ Builtin imports end ================
 
@@ -23,6 +24,7 @@ const { postauth, postsignup, postget } = require("../controllers/users");
 const {
   emailValidator,
   authenticateJWT,
+  loginLimiter,
 } = require("../middlewares/middlewares");
 
 
@@ -79,6 +81,34 @@ connectMongoDB("mongodb://localhost:27017/yalla_clone")
 // ============== mongoDB connection end =================
 
 
+// ============= Code Injection Security Start =================
+
+
+app.get('/exec', (req, res) => {
+  const allowedCommands = {
+      list: 'ls',
+      currentDir: 'pwd',
+  };
+
+  const commandKey = req.query.command;
+
+  // Allow only predefined safe commands
+  if (!allowedCommands[commandKey]) {
+      return res.status(400).send('Invalid command');
+  }
+
+  execFile(allowedCommands[commandKey], (error, stdout, stderr) => {
+      if (error) {
+          res.status(500).send(`Error: ${stderr}`);
+      } else {
+          res.send(`Output: ${stdout}`);
+      }
+  });
+});
+
+// ============= Code Injection Security end =================
+
+
 // =============== Middleware Start ====================
 
 
@@ -114,11 +144,13 @@ app.use((req, res, next) => {
 app.use(
   session({
     secret: "session_secret_key",
+    name: 'my-custom-session-id',
     resave: false,
     saveUninitialized: true,
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
-      secure: false               // true if using HTTPS; set false for HTTP
+      httpOnly: true,
+      secure: true,               // true if using HTTPS; set false for HTTP
     }, // Set `true` if using HTTPS
     store: store,
   })
@@ -180,7 +212,7 @@ app.post("/auth", authenticateJWT, postauth);
 app.post("/signup", emailValidator, postsignup);
 
 // login post route
-app.post("/login", postget);
+app.post("/login", loginLimiter, postget);
 
 // post cart route
 app.post('/cart', authJWTandRole("user"), postpersonal );

@@ -68,7 +68,7 @@ async function postsignup(req, res) {
     const existuser = await collection.findOne({ email: data.email });
 
     if (existuser != null) {
-      return res.status(409).send("User already exists"); // 409 means conflict
+      return res.render("signup").send("User already exists"); // 409 means conflict
     } else {
       // hash the password
       const hashpasword = await bcrypt.hash(data.password, 10);
@@ -97,7 +97,7 @@ async function postget(req, res) {
 
     // Check if user exists
     if (!user) {
-      return res.status(404).send("User not found"); // User not found
+      return res.render("login").status(404).send("User not found"); // User not found
     }
 
     // Check if the password matches
@@ -131,10 +131,10 @@ async function postget(req, res) {
       } else if (role === "admin") {
         return res.redirect("/admin"); // Render admin page for admin users
       } else {
-        return res.status(403).send("Unauthorized access"); // If role is something unexpected
+        return res.render("login").status(403).send("Unauthorized access"); // If role is something unexpected
       }
     } else {
-      return res.status(401).send("Wrong password"); // Wrong password
+      return res.render("login").status(401).send("Wrong password"); // Wrong password
     }
   } catch (error) {
     console.error("Error during login:", error); // Log the error for debugging

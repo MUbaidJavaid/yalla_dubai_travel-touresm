@@ -2,7 +2,7 @@
 
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
-
+const rateLimit = require('express-rate-limit');
 // ============ Builtin imports end ================
 
 
@@ -103,10 +103,24 @@ const authenticateJWT = (req, res, next) => {
 // =================== Middleware to Authenticate JWT end ====================
 
 
+
+
+// ================== Middleware Limit repeated login attempts Start =================
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 attempts
+  message: 'Too many login attempts, please try again later.',
+});
+
+// ================== Middleware Limit repeated login attempts end =================
+
+
 // =================== Middleware module exports ====================
 
 module.exports = {
   emailValidator,
   authJWTandRole,
   authenticateJWT,
+  loginLimiter,
 };
