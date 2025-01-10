@@ -19,7 +19,7 @@
     "ejs": "^3.1.10",
     "events": "^3.3.0",
     "express": "^4.21.1",
-    "express-rate-limit": "^7.4.1",
+    "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.2",
