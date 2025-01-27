@@ -53,7 +53,7 @@ const authJWTandRole = (role) => {
 
     try {
       // Verify and decode the token
-      const decoded = jwt.verify(token, secretKey);
+      const decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
       // Check if the role is the same as the role in the token
       if (role && role !== decoded.role) {
         return res.status(403).send("Unauthorized access");

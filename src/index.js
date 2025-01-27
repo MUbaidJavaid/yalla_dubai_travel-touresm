@@ -215,7 +215,7 @@ app.get("/api/admin", getadmin);
 app.get("/api/userordersdetails", getuserordersdetails );
 
 // get cart route 
-app.get('/api/cart', authJWTandRole("user"), getpersonal);
+app.get('/api/cart', authJWTandRole("user") , getpersonal);
 
 // add to remove cart route
 app.get('/remove-from-cart',authJWTandRole("user") , removefromcart );
@@ -252,10 +252,10 @@ app.get("/api/singleproduct", cors(corsOptions), authJWTandRole("admin"), getsin
 app.post("/auth", authenticateJWT, postauth);
 
 // Signup post route
-app.post("/api/signup", emailValidator, postsignup);
+app.post("/signup", emailValidator, postsignup);
 
 // login post route
-app.post("/api/login", loginLimiter, postget);
+app.post("/login", loginLimiter, postget);
 
 // post cart route
 app.post('/api/cart', authJWTandRole("user"), postpersonal );

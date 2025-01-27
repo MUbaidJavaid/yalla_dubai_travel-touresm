@@ -70,7 +70,7 @@ async function postsignup(req, res) {
       const hashpasword = await bcrypt.hash(data.password, 10);
       data.password = hashpasword;
       await collection.insertMany(data);
-      res.redirect("/api/login");
+      res.redirect("/login");
     }
   } catch (error) {
     console.error(error);
