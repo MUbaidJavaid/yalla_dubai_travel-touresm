@@ -1,17 +1,20 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    default: true,
-  },
   cityName:  {
+    type: String,
+    required: true
+  },
+  citydescription:{
     type: String,
     required: true
   },
   cityImage:  {
     type: String,
     required: true
+  },
+  cityImage1: {
+    type: String
   },
   tourService: {
     type: String,
@@ -29,11 +32,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  title: {
+  producttitle: {
     type: String,
     required: true
   },
-  discription:{
+  productdescription:{
     type:String,
     required: true
   },
@@ -45,27 +48,25 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  total: {
-    type: Number,
-    required: true
-  },
   discountPercentage: {
     type: Number,
     required: true
   },
-  discountedTotal: {
-    type: Number,
-    required: true
-  },
+  discountedTotal: { type: Number, default: function() {
+    return this.price * 0.8;  // Assuming a default discount of 20%
+  }},
   thumbnail: {
     type: [String],
     required: true,
-    validate: {
-      validator: function(url) {
-        return /^(ftp|http|https):\/\/[^ "]+$/.test(url);
-      },
-      message: props => `${props.value} is not a valid URL`
-    }
+  },
+  thumbnail1:{
+    type: String,
+  },
+  thumbnail2:{
+    type: String,
+  },
+  thumbnail3:{
+    type: String,
   },
   adultBaseprice:{
     type: Number,
@@ -75,10 +76,34 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  dayBaseprice:{
+  prime:{
     type: Number,
     required: true
-  }
+  },
+  nonprime:{
+    type: Number,
+    required: true
+  },
+  privatetransferprice:{
+    type: Number,
+    required: true
+  },
+  privatetransferperson:{
+    type: Number,
+    required: true
+  },
+  categorie:{
+    type: String,
+    required: true
+  },
+  translatelanguage:{
+    type: String,
+    required: true
+  },
+  wifi: {
+    type: String,
+    required: true
+  },
 });
 
 const Productes = mongoose.model("Product", productSchema);

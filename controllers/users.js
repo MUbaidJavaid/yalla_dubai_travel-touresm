@@ -10,14 +10,15 @@ const session = require("express-session");
 
 // ============ User define imports Start ================
 
-const { collection } = require("../models/users");
+const  collection  = require("../models/users");
+
 
 // ============ User define imports end  ================
 
 
 // ============ Using a predefined secret key for JWT token =============
 
-const secretKey = "Ubaid_secret"; // This should be stored in a secure environment
+const secretKey = process.env.TOKEN_SECRET_KEY; // This should be stored in a secure environment
 
 
 // ============= auth user post function ================
@@ -44,13 +45,8 @@ function getsignup(req, res) {
 
 // ============== signup get function end ================
 
-// ============= admin get function Start ================
 
-function getadmin(req, res) {
-  res.render("admin");
-}
 
-// ============= admin get function end ================
 
 // ============= post signup function Start ================
 
@@ -73,8 +69,8 @@ async function postsignup(req, res) {
       // hash the password
       const hashpasword = await bcrypt.hash(data.password, 10);
       data.password = hashpasword;
-      const userdata = await collection.insertMany(data);
-      res.redirect("/login");
+      await collection.insertMany(data);
+      res.redirect("/api/login");
     }
   } catch (error) {
     console.error(error);
@@ -122,14 +118,16 @@ async function postget(req, res) {
       // sameSite: 'Strict' can be used too
 
       req.session.userId = user.id; // Store user ID in session for cart management
+      req.session.userName = user.name; // Store user name in session for cart management
+      req.session.userEmail = user.email; // Store user email in
       req.session.cart = []; // Initialize cart in the session
 
       // Redirect to page according to role
 
       if (role === "user") {
-        return res.redirect("/home"); // Render home page for normal users
+        return res.redirect("/api/home"); // Render home page for normal users
       } else if (role === "admin") {
-        return res.redirect("/admin"); // Render admin page for admin users
+        return res.redirect("/api/admin"); // Render admin page for admin users
       } else {
         return res.render("login").status(403).send("Unauthorized access"); // If role is something unexpected
       }
@@ -150,7 +148,6 @@ module.exports = {
   postauth,
   getlogin,
   getsignup,
-  getadmin,
   postsignup,
   postget,
 };

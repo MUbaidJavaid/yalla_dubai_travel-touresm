@@ -1,0 +1,14 @@
+# Ignore environment files
+.env
+
+# Ignore uploads folder
+./uploads/
+
+# Ignore node_modules folder
+./node_modules/
+
+# Ignore package-lock.json file
+./package-lock.json
+
+# Ignore package.json file
+./package.json

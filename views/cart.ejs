@@ -309,7 +309,7 @@
             <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
          </span>
     </div>
-    <ul class="md:flex md:items-center z-[-1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
+    <ul class="md:flex md:items-center z-[1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
         <li class="mx-4 my-6 md:my-0">
             <a href="home" class="text-sm hover:text-cyan-500 duration-500">HOME</a>
         </li>
@@ -395,6 +395,11 @@
                 <td class="px-6 py-4 font-semibold text-[#060840]" id="totalCost">
                   <span id="totalCost">
                     $<%= item.totalCost %>
+                  </span>
+                </td>
+                <td class="px-6 py-4 font-semibold text-[#060840]" id="date">
+                  <span id="date">
+                    <%= item.check_out %>
                   </span>
                 </td>
                 <td class="px-6 py-4">
@@ -601,7 +606,7 @@ personal_information.addEventListener("click", async(event) =>{
                 kids_no: Kids_no,
                 totalCost: TotalCost,
             };
-            console.log(data);
+            // console.log(data);
             const validateForm = (data) => {
             const errors = [];
             if (!data.first_name) errors.push("First name is required.");

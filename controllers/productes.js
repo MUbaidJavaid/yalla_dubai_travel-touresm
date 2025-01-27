@@ -119,9 +119,10 @@ async function getCity(req, res) {
 function removefromcart (req, res) {
   const productId = req.query.productId;
 
+  // Check if there's a cart and a productId is provided in the query parameters
   if (!req.session.cart || !productId) {
     // If there's no cart or productId is invalid, redirect to home
-    return res.redirect('/home');
+    return res.redirect('/api/home');
   }
 
   // Use filter to remove the product from the cart
@@ -130,11 +131,15 @@ function removefromcart (req, res) {
   // Check if the cart is now empty
   if (req.session.cart.length === 0) {
     delete req.session.cart; // Clear the cart from the session
-    return res.redirect('/home'); // Redirect to home or products page
+    return res.redirect('/api/home'); // Redirect to home or products page
+  } else {
+
+    // If the cart is not empty, redirect to the cart page
+    return res.render('cart', { cart: req.session.cart });
   }
 
   // Render the updated cart
-  res.render('cart', { cart: req.session.cart });
+  // res.render('cart');
 }
 
 // ============= get remove from cart function end ===============

@@ -44,7 +44,7 @@
               <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
            </span>
       </div>
-      <ul class="md:flex md:items-center z-[-1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
+      <ul class="md:flex md:items-center z-[1] md:z-auto md:static  absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 md:top-[-400px] transition-all easy-in duration-500 ">
           <li class="mx-4 my-6 md:my-0">
               <a href="home" class="text-sm hover:text-cyan-500 duration-500">HOME</a>
           </li>
@@ -79,8 +79,8 @@
           </div>
         </div>
         <!-- <p>Product ID: <%= /* product.id */ %></p> -->
-            <p  class="mb-2  font-serif text-xs font-bold leading-snug tracking-normal text-[#060840] antialiased  mx-7">Name: <span class="text-xs font-medium text-gray-700"><%= producte.title %></span></p>
-            <p  class="mb-2  font-serif text-xs font-bold leading-snug tracking-normal text-[#060840] antialiased  mx-7">Discription: <span class="text-xs font-medium text-gray-700"><%= producte.discription %></span></p>
+            <p  class="mb-2  font-serif text-xs font-bold leading-snug tracking-normal text-[#060840] antialiased  mx-7">Name: <span class="text-xs font-medium text-gray-700"><%= producte.producttitle %></span></p>
+            <p  class="mb-2  font-serif text-xs font-bold leading-snug tracking-normal text-[#060840] antialiased  mx-7">Discription: <span class="text-xs font-medium text-gray-700"><%= producte.description %></span></p>
             <p class="font-bold mb-2  text-xs mx-7 text-[#060840]  font-serif">Price: <span id="price" class="text-xs font-medium text-gray-700">$<%= producte.price %></span></p>
             <p class="font-bold mb-2  text-xs mx-7 text-[#060840]  font-serif">Adult Price: <span id="mySpan1" class="text-xs font-medium text-gray-700">$<%= producte.adultBaseprice %></span></p>
             <p class="font-bold mb-2  text-xs mx-7 text-[#060840]  font-serif">Kids Price: <span id="mySpan2"  class="text-xs font-medium text-gray-700">$<%= producte.kidsBaseprice %></span></p>
@@ -93,7 +93,7 @@
       <div class=" my-14 md:mt-6 mx-9 md:w-[25vw]">
         <form action="/cart" method="post">
           <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 ">
-            <h5 class="mb-4 text-xl font-medium text-gray-500 "><%= producte.title %></h5>
+            <h5 class="mb-4 text-xl font-medium text-gray-500 "><%= producte.producttitle %></h5>
             <div class="flex items-baseline text-gray-900 ">
                 <span class="text-4xl font-semibold text-[#060840]">$</span>
                 <span class="text-5xl font-extrabold tracking-tight text-[#060840]"><%= producte.price %></span>
@@ -178,14 +178,16 @@
         const numericValue3 = parseFloat(spanValue3.replace('$', ''));
         const totalCost = (Adults * numericValue1 + kids * numericValue2 + daysCount* numericValue3);
         total_no.value = totalCost;
-        const url = `cart/?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}`;
+        const check_out_date = document.getElementById('check_out_date').value;
+        const url = `cart/?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}&check_out_date=${check_out_date}`;
+       
 
-
+        // console.log(check_out_date);
 
       fetch(url)
        .then(response => {
             if (response.ok) {
-              window.location.href = `/cart?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}`;
+              window.location.href = `/cart?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}&check_out_date=${check_out_date}`;
             } else {
               throw new Error(`HTTP error! Status: ${response.status}`);
             }
