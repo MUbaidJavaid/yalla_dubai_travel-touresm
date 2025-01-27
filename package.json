@@ -7,9 +7,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "child_process": "^1.0.2",
     "connect-mongodb-session": "^5.0.0",
@@ -26,12 +25,21 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.2",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.7",
     "path": "^0.12.7",
     "Router": "^2.1.0",
     "validator": "^13.12.0"
   },
   "devDependencies": {
+    "nodemon": "^3.1.9",
     "tailwindcss": "^3.4.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MUbaidJavaid/login.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MUbaidJavaid/login/issues"
+  },
+  "homepage": "https://github.com/MUbaidJavaid/login#readme",
+  "description": ""
 }
