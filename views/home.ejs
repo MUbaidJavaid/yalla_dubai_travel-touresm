@@ -136,12 +136,12 @@ cityContainer.addEventListener("click", (event) => {
     button.addEventListener("click", (event) => {
       const productId = event.target.getAttribute("data-id");
       // const productId = '12345'; // replace with your dynamic ID
-      const url = `product/?id=${productId}`;
+      const url = `api/product/?id=${productId}`;
 
       fetch(url)
       .then(response => {
         if (response.ok) {
-          window.location.href = `/product?id=${productId}`;
+          window.location.href = `/api/product?id=${productId}`;
         } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

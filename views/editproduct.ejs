@@ -28,7 +28,7 @@
   </head>
   <body class="">
     <div class="flex justify-center">
-        <form action="/productupdate" method="post" class="shadow-lg p-10" enctype="multipart/form-data">
+        <form action="/api/productupdate" method="post" class="shadow-lg p-10" enctype="multipart/form-data">
                 <div class="space-y-12">
 
                     <div class="border-b border-gray-900/10 pb-12">
@@ -239,7 +239,6 @@
                                 <label for="cityImage" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                 <span>Upload a file</span>
                                 <input id="cityImage" name="cityImage" type="file" class="sr-only">
-                                <img src="" alt="" id="cityImage1" class="w-20 h-20">
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
                             </div>
@@ -247,7 +246,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <img src="" alt="" id="cityImage1" class="w-20 h-20">
 
                     <div class="sm:col-span-3">
                         <label for="categorie" class="block text-sm/6 font-medium text-gray-900">Categorie</label>
@@ -278,7 +277,7 @@
         async function create() {
             try {
                 // Fetching data from the API
-                const response = await fetch(`http://localhost:5001/singleproduct?id=67939b115228175dd268b87b`);
+                const response = await fetch(`http://localhost:5000/api/singleproduct?id=67938c62d960eb8a241a2a9d`);
                 const data = await response.json();
                 const data1 = await data.product;
                 console.log("Fetched Data:1", data1);

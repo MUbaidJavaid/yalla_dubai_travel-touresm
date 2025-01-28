@@ -1,21 +1,65 @@
 // ============ Builtin imports Start ================
-
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const rateLimit = require('express-rate-limit');
+const { execFile } = require('child_process');
+require('events').EventEmitter.defaultMaxListeners = 15; // Increase global listener limit if needed
 // ============ Builtin imports end ================
 
 
+let listenerAdded = false;
+function addListener() {
+  if (!listenerAdded) {
+    process.once('exit', () => {
+      console.log('Process is exiting');
+    });
+    listenerAdded = true; // Prevent duplicate listeners
+  }
+}
+// Ensure this is only called once in your script
+addListener();
 
-// ==================== Using a predefined secret key for JWT token ==================
+
+process.once('exit', () => {
+  console.log('Final cleanup before exit');
+});
+console.log('Script is running');
 
 
-const secretKey = "Ubaid_secret"; // This should be stored in a secure environment
+  const allowedCommands =  (req, res) => {
+  const allowedCommands = {
+      list: 'ls',
+      currentDir: 'pwd',
+  };
 
+
+  const commandKey = req.query.command;
+
+  // Allow only predefined safe commands
+  if (!allowedCommands[commandKey]) {
+      return res.status(400).send('Invalid command');
+  }
+
+  execFile(allowedCommands[commandKey], (error, stdout, stderr) => {
+      if (error) {
+          res.status(500).send(`Error: ${stderr}`);
+      } else {
+          res.send(`Output: ${stdout}`);
+      }
+  });
+};
 
 
 // =================== Middleware to validate email Start ====================
 
+
+
+const corsOptions = {
+  "origin": process.env.CORS_OPTIONS,
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+};
 
 
 const emailValidator = (req, res, next) => {
@@ -91,7 +135,7 @@ const authenticateJWT = (req, res, next) => {
 
   try {
     // Verify and decode the token
-    const decoded = jwt.verify(token, secretKey);
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
     // Attach user info to request object
     req.user = decoded;
     next(); // Continue to the next middleware or route handler
@@ -116,6 +160,16 @@ const loginLimiter = rateLimit({
 // ================== Middleware Limit repeated login attempts end =================
 
 
+// ================== Middleware to handle file uploads Start =================
+// Middleware to set headers for caching
+const headers = (req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+  next();
+}
+
 // =================== Middleware module exports ====================
 
 module.exports = {
@@ -123,4 +177,7 @@ module.exports = {
   authJWTandRole,
   authenticateJWT,
   loginLimiter,
+  corsOptions,
+  headers,
+  allowedCommands,
 };

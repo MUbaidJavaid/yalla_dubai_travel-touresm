@@ -179,7 +179,7 @@
         const totalCost = (Adults * numericValue1 + kids * numericValue2 + daysCount* numericValue3);
         total_no.value = totalCost;
         const check_out_date = document.getElementById('check_out_date').value;
-        const url = `cart/?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}&check_out_date=${check_out_date}`;
+        const url = `api/cart/?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}&check_out_date=${check_out_date}`;
        
 
         // console.log(check_out_date);
@@ -187,7 +187,7 @@
       fetch(url)
        .then(response => {
             if (response.ok) {
-              window.location.href = `/cart?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}&check_out_date=${check_out_date}`;
+              window.location.href = `/api/cart?id=${productId}&adults_no=${Adults}&kids_no=${kids}&check_in=${check_in}&check_out=${check_out}&days_count=${daysCount}&total_no=${total_no}&totalCost=${totalCost}&check_out_date=${check_out_date}`;
             } else {
               throw new Error(`HTTP error! Status: ${response.status}`);
             }

@@ -93,8 +93,8 @@
 
         if (response.status == 200) {
           data = await response.json();
-          if (data.user.role == "admin") window.location.href = "/admin";
-          else window.location.href = "/home";
+          if (data.user.role == "admin") window.location.href = "/api/admin";
+          else window.location.href = "/api/home";
         } else {
           console.log("Token not verified !");
         }
