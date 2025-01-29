@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 require('dotenv').config({ path: './src/.env' });
 const cors = require('cors');
-const multer = require("multer");
 const path = require("path");
 // ============ Builtin imports end ================
 
@@ -73,42 +72,7 @@ app.use(session( {
 
 
 
-// Set storage engine for multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./uploads"); // Directory where images will be stored
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
-  },
-});
 
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limit: 5MB
-  fileFilter: (req, file, cb) => {
-    const fileTypes = /jpeg|jpg|png|gif/; // Allowed extensions
-    const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
-    const mimeType = fileTypes.test(file.mimetype);
-
-    if (mimeType && extName) {
-      return cb(null, true);
-    } else {
-      cb("Error: Images Only!");
-    }
-  },
-});
-
-// Adjust multer to handle multiple file fields
-const createMultipleUploadMiddleware = () => {
-  return upload.fields([
-    { name: 'cityImage', maxCount: 1 },  // Single city image
-    { name: 'thumbnail', maxCount: 3 }   // Multiple thumbnail images
-  ]);
-};
-
-
-module.exports = createMultipleUploadMiddleware; // Export the function as it is
 // ============= Middleware end ==================
 
 // ============= Routes Middleware Start =============

@@ -51,7 +51,7 @@ async function getuserordersdetails(req,res){
    
    };
 
-async function postproductcreat(req, res){
+async function postproductcreat(req, res) {
       try {
         const { cityName, citydescription, tourService, duration, transportService, pickUp, producttitle, discountPercentage, discountedtotal,  price, prime, nonprime, privatetransferprice, quantity, productdescription, privatetransferperson, categorie, adultBaseprice, kidsBaseprice, translatelanguage, wifi } = req.body;
         const cityImage = req.files['cityImage'] ? req.files['cityImage'][0].filename : null;
