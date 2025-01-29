@@ -45,7 +45,8 @@ async function gethome(req, res) {
 // ============= get product function Start ===============
 
 async function getproduct(req, res) {
-  const productId = req.query.id; // Directly get the `id` from query parameters
+   const productId = req.query.id; // Directly get the `id` from query parameters
+
   try{  
      // Fetch the product details from the database
      const product = await Productes.findById(productId);  

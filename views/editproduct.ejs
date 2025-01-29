@@ -69,9 +69,9 @@
                             </div>
                         </div>
                         
-                        <img src="" alt="" id="thumbnail1" class="w-20 h-20">
-                        <img src="" alt="" id="thumbnail2" class="w-20 h-20">
-                        <img src="" alt="" id="thumbnail3" class="w-20 h-20">
+                        <img src="/" alt="" name="existingThumbnails" class="w-20 h-20">
+                        <img src="/" alt="" name="existingThumbnails" class="w-20 h-20">
+                        <img src="/" alt="" name="existingThumbnails" class="w-20 h-20">
                         <div class=" w-[100%] flex justify-between mt-3">
                             <div class="w-[48%]">
                                 <label for="tourService" class="block text-sm/6 font-medium text-gray-900">Tour Service</label>
@@ -246,7 +246,7 @@
                             </div>
                         </div>
                     </div>
-                    <img src="" alt="" id="cityImage1" class="w-20 h-20">
+                    <img src="/" alt="" id="existingCityImage" class="w-20 h-20">
 
                     <div class="sm:col-span-3">
                         <label for="categorie" class="block text-sm/6 font-medium text-gray-900">Categorie</label>
@@ -277,7 +277,7 @@
         async function create() {
             try {
                 // Fetching data from the API
-                const response = await fetch(`http://localhost:5000/api/singleproduct?id=67938c62d960eb8a241a2a9d`);
+                const response = await fetch(`http://localhost:4000/api/singleproduct?id=6798b6813d59bdbfff091f28`);
                 const data = await response.json();
                 const data1 = await data.product;
                 console.log("Fetched Data:1", data1);
@@ -285,13 +285,13 @@
                 // Map data to DOM elements
                 document.getElementById("cityName").value = data1.cityName;
                 document.getElementById("citydescription").value = data1.citydescription;
-                document.getElementById("cityImage1").src = data1.cityImage;
+                document.getElementsByName("existingCityImage").src = data1.cityImage;
                 document.getElementById("categorie").value = data1.categorie;
                 document.getElementById("producttitle").value = data1.producttitle;
                 document.getElementById("productdescription").value = data1.productdescription;
-                document.getElementById("thumbnail1").src = data1.thumbnail[0]
-                document.getElementById("thumbnail2").src = data1.thumbnail[1]
-                document.getElementById("thumbnail3").src = data1.thumbnail[2]
+                document.getElementsByName("existingThumbnails").src = data1.thumbnail[0]
+                document.getElementsByName("existingThumbnails").src = data1.thumbnail[1]
+                document.getElementsByName("existingThumbnails").src = data1.thumbnail[2]
                 document.getElementById("price").value = data1.price;
                 document.getElementById("quantity").value = data1.quantity;
                 document.getElementById("categorie").value = data1.categorie;

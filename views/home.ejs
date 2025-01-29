@@ -72,7 +72,7 @@
   <% products.forEach(product => { %>
   <div class="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-[#060840] shadow-lg my-10 ">
     <div class="relative mx-4 my-4 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r ">
-      <img src="<%= product.thumbnail[0] %>" alt="<%= product.producttitle %>" class="bg-cover w-[98%] h-[99%]" />
+      <img src="/<%= product.thumbnail[0] %>" alt="<%= product.producttitle %>" class="bg-cover w-[98%] h-[99%]" />
     </div>
     <div class="p-6">
       <div class="flex justify-between">
@@ -102,7 +102,7 @@
     data-city="<%= city.cityName %>">
     <div
       class="relative mx-4 my-4 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 bg-gradient-to-r">
-      <img src="<%= city.cityImage %>" alt="<%= city.cityName %>" class="bg-cover w-[98%] h-[99%]" />
+      <img src="/<%= city.cityImage %>" alt="<%= city.cityName %>" class="bg-cover w-[98%] h-[99%]" />
     </div>
     <p
       class="relative ml-3 mb-2 font-sans text-xl font-bold leading-snug tracking-normal text-[#060840] antialiased">
@@ -136,7 +136,7 @@ cityContainer.addEventListener("click", (event) => {
     button.addEventListener("click", (event) => {
       const productId = event.target.getAttribute("data-id");
       // const productId = '12345'; // replace with your dynamic ID
-      const url = `api/product/?id=${productId}`;
+      const url = `/api/product?id=${productId}`;
 
       fetch(url)
       .then(response => {

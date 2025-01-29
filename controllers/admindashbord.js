@@ -127,7 +127,7 @@ async function postproductcreat(req, res) {
 
       try {
         // const productId = req.query.id;
-        const productId =  "67939b115228175dd268b87b";
+        const productId =  "6798b6813d59bdbfff091f28";
         if (!productId) {
           return res.status(400).json({ message: "Invalid product id" });
         }
@@ -137,50 +137,38 @@ async function postproductcreat(req, res) {
           let cityImage = "";
           let thumbnail = [];
     
-          // Check if files are uploaded
-          if (req.file) {
-            // Single file upload for cityImage
-            cityImage = req.file.filename;
-          } else {
-            // If no new cityImage uploaded, use the old one from req.body
-            cityImage = req.body.cityImage || ""; // Fallback to the old image
+          // Correct: Use req.files.cityImage (matches Multer's field name)
+          if (req.files && req.files.cityImage) {
+            cityImage = req.files.cityImage[0].filename; // [0] because maxCount: 1
           }
     
-          // Check for multiple files (for thumbnails)
           if (req.files && req.files.thumbnail) {
             thumbnail = req.files.thumbnail.map(file => file.filename);
           }
+          // If no new thumbnails, retain existing ones from the database
+          else {
+            thumbnail = req.body.thumbnail || [];
+          }
     
-          // Function to delete old files
           const deleteOldFiles = async () => {
             try {
-              // Check and delete the old city image if available
-              if (req.body.cityImage && req.body.cityImage1 !== cityImage) {
-                // Only delete if the city image is actually different or exists
-                await fs.unlink(`./uploads${req.body.cityImage1}`);
-                console.log(`Deleted old city image: ${req.body.cityImage1}`);
+              // Delete old cityImage if it exists and a new one is uploaded
+              if (req.body.existingCityImage && req.files.cityImage) {
+                await fs.unlink(`./uploads/${req.body.existingCityImage}`);
+                console.log(`Deleted old city image: ${req.body.existingCityImage}`);
               }
-          console.log(`Deleted old city image: ${req.body}`);
-              // Check and delete old thumbnails if available
-              if (req.body.thumbnail0) {
-                await fs.unlink(`./uploads${req.body.thumbnail0}`);
-                console.log(`Deleted old thumbnail0: ${req.body.thumbnail0}`);
+          
+              // Delete old thumbnails if new ones are uploaded
+              if (req.body.existingThumbnails && req.files.thumbnail) {
+                for (const oldThumbnail of req.body.existingThumbnails) {
+                  await fs.unlink(`./uploads/${oldThumbnail}`);
+                  console.log(`Deleted old thumbnail: ${oldThumbnail}`);
+                }
               }
-              if (req.body.thumbnail1) {
-                await fs.unlink(`./uploads${req.body.thumbnail1}`);
-                console.log(`Deleted old thumbnail1: ${req.body.thumbnail1}`);
-              }
-              if (req.body.thumbnail2) {
-                await fs.unlink(`./uploads${req.body.thumbnail2}`);
-                console.log(`Deleted old thumbnail2: ${req.body.thumbnail2}`);
-              }
-    
-              console.log('Old files deleted successfully!');
             } catch (error) {
               console.error(`Error deleting old files: ${error.message}`);
             }
           };
-    
           // Delete old files before saving new ones
           await deleteOldFiles();
     

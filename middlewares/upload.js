@@ -13,10 +13,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Handle multiple file uploads
 const multipleUpload = upload.fields([
-  { name: 'cityImage', maxCount: 1 },
-  { name: 'thumbnail', maxCount: 3 },
-]);
+    { name: 'cityImage', maxCount: 1 }, // Expects a field named "cityImage"
+    { name: 'thumbnail', maxCount: 3 }, // Expects a field named "thumbnail"
+  ]);
 
 module.exports = multipleUpload;

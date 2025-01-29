@@ -53,7 +53,9 @@ app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, "uploads")));
+// Remove or correct the duplicate static path
+app.use(express.static(path.join(__dirname, "../uploads")));
+// app.use(express.static("uploads")); // Remove if uploads is not in the server's root
 
 app.use(headers);
 
